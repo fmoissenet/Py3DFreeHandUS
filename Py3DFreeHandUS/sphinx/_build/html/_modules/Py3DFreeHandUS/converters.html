@@ -54,6 +54,49 @@
 
 <span class="sd">&quot;&quot;&quot;</span>
 
+<div class="viewcode-block" id="vti2arr"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.converters.vti2arr">[docs]</a><span class="k">def</span> <span class="nf">vti2arr</span><span class="p">(</span><span class="n">fileIn</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert voxel-array from VTI to Numpy 3D image array.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fileIn : str</span>
+<span class="sd">        Path for input VTI file.</span>
+<span class="sd">        </span>
+<span class="sd">    fileOut : str</span>
+<span class="sd">        Path for output MAT file.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    V : np.ndarray</span>
+<span class="sd">        Lx x Ly x Lz 3D array, representing the voxel-array.</span>
+<span class="sd">        </span>
+<span class="sd">    metadata : dict</span>
+<span class="sd">        Dict containing metadata about voxel array:</span>
+<span class="sd">        </span>
+<span class="sd">        - &#39;spacing&#39;: array of voxel dimensions (pixel/mm)</span>
+<span class="sd">        </span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">vtk</span>
+    <span class="kn">from</span> <span class="nn">vtk.util</span> <span class="kn">import</span> <span class="n">numpy_support</span> <span class="k">as</span> <span class="n">nps</span>
+    
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkXMLImageDataReader</span><span class="p">()</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">SetFileName</span><span class="p">(</span><span class="n">fileIn</span><span class="p">)</span>
+    <span class="n">reader</span><span class="o">.</span><span class="n">Update</span><span class="p">()</span>
+    <span class="n">vtkImageData</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">GetOutput</span><span class="p">()</span>
+    <span class="n">dim</span> <span class="o">=</span> <span class="n">vtkImageData</span><span class="o">.</span><span class="n">GetDimensions</span><span class="p">()</span>
+    <span class="n">flatV</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">vtk_to_numpy</span><span class="p">(</span><span class="n">vtkImageData</span><span class="o">.</span><span class="n">GetPointData</span><span class="p">()</span><span class="o">.</span><span class="n">GetScalars</span><span class="p">())</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">flatV</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">dim</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c">#V = flatV.reshape(dim)</span>
+    <span class="n">metadata</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">spacing</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">vtkImageData</span><span class="o">.</span><span class="n">GetSpacing</span><span class="p">())[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c">#spacing = np.array(vtkImageData.GetSpacing())</span>
+    <span class="n">metadata</span><span class="p">[</span><span class="s">&#39;spacing&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">spacing</span>
+    <span class="k">return</span> <span class="n">V</span><span class="p">,</span> <span class="n">metadata</span>
+    
+</div>
 <div class="viewcode-block" id="vti2mat"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.converters.vti2mat">[docs]</a><span class="k">def</span> <span class="nf">vti2mat</span><span class="p">(</span><span class="n">fileIn</span><span class="p">,</span> <span class="n">fileOut</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Convert voxel-array from VTI to MAT (MATLAB(R)) format.</span>
 <span class="sd">    </span>

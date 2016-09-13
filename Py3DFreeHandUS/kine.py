@@ -555,8 +555,8 @@ def resampleMarker(M, x=None, origFreq=None, origX=None, step=None):
         Indices of ``x`` intersecting time vector of the original ``M``.
 
     """
-    if x <> None and (origFreq <> None or origX <> None):
-        if origFreq <> None:
+    if x is not None and (origFreq is not None or origX is not None):
+        if origFreq is not None:
             N = M.shape[0]
             dt = 1. / origFreq
             x1 = np.linspace(0, (N-1)*dt, num=N)
@@ -566,7 +566,7 @@ def resampleMarker(M, x=None, origFreq=None, origX=None, step=None):
 #        f = interp1d(x1, M, axis=0)
 #        M2 = f(x2)
         M2 = interpSignals(x1, x2, M)
-    elif step <> None:
+    elif step is not None:
         N = M.shape[0]
         x1 = np.linspace(0, N-1, num=N)
         x2 = np.arange(0, N-1, step)
@@ -856,7 +856,7 @@ class Stylus:
         """Perform tip reconstruction.
         """
         
-        if self.tipFunArgs == None:
+        if self.tipFunArgs is None:
             self.tip = self.tipFun(self.P)
         else:
             self.tip = self.tipFun(self.P, self.tipFunArgs)

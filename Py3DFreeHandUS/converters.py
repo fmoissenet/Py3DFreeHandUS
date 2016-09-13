@@ -5,6 +5,49 @@
 
 """
 
+def vti2arr(fileIn):
+    """Convert voxel-array from VTI to Numpy 3D image array.
+    
+    Parameters
+    ----------
+    fileIn : str
+        Path for input VTI file.
+        
+    fileOut : str
+        Path for output MAT file.
+        
+    Returns
+    -------
+    V : np.ndarray
+        Lx x Ly x Lz 3D array, representing the voxel-array.
+        
+    metadata : dict
+        Dict containing metadata about voxel array:
+        
+        - 'spacing': array of voxel dimensions (pixel/mm)
+        
+        
+    """
+    
+    import numpy as np
+    import vtk
+    from vtk.util import numpy_support as nps
+    
+    reader = vtk.vtkXMLImageDataReader()
+    reader.SetFileName(fileIn)
+    reader.Update()
+    vtkImageData = reader.GetOutput()
+    dim = vtkImageData.GetDimensions()
+    flatV = nps.vtk_to_numpy(vtkImageData.GetPointData().GetScalars())
+    V = flatV.reshape(dim[::-1])
+    #V = flatV.reshape(dim)
+    metadata = {}
+    spacing = np.array(vtkImageData.GetSpacing())[::-1]
+    #spacing = np.array(vtkImageData.GetSpacing())
+    metadata['spacing'] = spacing
+    return V, metadata
+    
+
 def vti2mat(fileIn, fileOut):
     """Convert voxel-array from VTI to MAT (MATLAB(R)) format.
     

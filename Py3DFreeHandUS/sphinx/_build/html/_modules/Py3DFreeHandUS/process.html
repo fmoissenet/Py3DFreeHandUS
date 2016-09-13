@@ -85,7 +85,7 @@
     <span class="k">return</span> <span class="bp">False</span>
 
 <span class="k">def</span> <span class="nf">checkFreq</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">f</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Acquisition frequency was not defined&#39;</span><span class="p">)</span>
 <span class="c">#    if not checkInt(f) or f &lt;= 0:</span>
 <span class="c">#        raise Exception(&#39;Acquisition frequency must be integer and positive&#39;)</span>
@@ -99,20 +99,20 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;There must be at least 3 markers&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkKineFiles</span><span class="p">(</span><span class="n">kineFiles</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">kineFiles</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">kineFiles</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Kinematics files were not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">L</span> <span class="o">&lt;&gt;</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">kineFiles</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="n">L</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Number of kinematics files must be {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">checkUsFiles</span><span class="p">(</span><span class="n">usFiles</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">usFiles</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">usFiles</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;US files were not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">L</span> <span class="o">&lt;&gt;</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">usFiles</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="n">L</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Number of US files must be {0}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
 
 
 <span class="k">def</span> <span class="nf">checkIm2PrPose</span><span class="p">(</span><span class="n">prRim</span><span class="p">,</span> <span class="n">Tim</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">prRim</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">Tim</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">prRim</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">Tim</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
          <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;US probe calibration was not performed&#39;</span><span class="p">)</span>        
     
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">prRim</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">prRim</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">prRim</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span><span class="p">:</span>
@@ -122,7 +122,7 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;US image-to-probe position vector must be a 3 elements vector&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkPr2GlPose</span><span class="p">(</span><span class="n">Rpr</span><span class="p">,</span> <span class="n">Tpr</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">Rpr</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">Tpr</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">Rpr</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">Tpr</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
          <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;US probe pose computation was not performed&#39;</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Rpr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">Rpr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">Rpr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span><span class="p">:</span>
@@ -132,13 +132,13 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Probe-to-global position vector must be a N x 3 matrix&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkIm2GlPose</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">R</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">R</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Pose for US images was not calculated&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;&gt;</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&gt;</span> <span class="mi">4</span> <span class="ow">or</span> <span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&gt;</span> <span class="mi">4</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Image-to-global roto-translation matrix must be a N x 4 x 4 matrix&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkGl2ConvPose</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">R</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">R</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Pose from global to convenient reference frame to was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">R</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;auto_PCA&#39;</span><span class="p">,</span><span class="s">&#39;first_last_frames_centroid&#39;</span><span class="p">]:</span>
@@ -160,23 +160,23 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Phantom not supported&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkFeatures</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">features</span> <span class="o">==</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">features</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">features</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Features from US images were not extracted&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkImDim</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;At least one US image dimensions was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">checkInt</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="ow">or</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;US image dimensions must be integer and positive&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkPixel2mm</span><span class="p">(</span><span class="n">pixel2mm</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">pixel2mm</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">pixel2mm</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;US image pixel-to-mm ratio was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">pixel2mm</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;US image pixel-to-mm ratio must be positive&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkFxyz</span><span class="p">(</span><span class="n">fxyz</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">fxyz</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fxyz</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Voxel array scaling factors were not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fxyz</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">fxyz</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;auto_bounded_parallel_scans&#39;</span><span class="p">]:</span>
@@ -189,47 +189,47 @@
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;All voxel array scaling factors must be positive&#39;</span><span class="p">)</span>  
 
 <span class="k">def</span> <span class="nf">checkWrapper</span><span class="p">(</span><span class="n">wrapper</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">wrapper</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">wrapper</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Wrapping method was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">wrapper</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;parallelepipedon&#39;</span><span class="p">,</span> <span class="s">&#39;convex_hull&#39;</span><span class="p">,</span><span class="s">&#39;none&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Wrapping method not supported&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkStep</span><span class="p">(</span><span class="n">step</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">step</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">step</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Wrapping creation step was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">checkInt</span><span class="p">(</span><span class="n">step</span><span class="p">)</span> <span class="ow">or</span> <span class="n">step</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Wrapping creation step must be integer and positive&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkV</span><span class="p">(</span><span class="n">V</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">V</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">V</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Voxel array initialization was not performed&#39;</span><span class="p">)</span>
         
 <span class="k">def</span> <span class="nf">checkPathForSuppFiles</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">fp</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fp</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Path for support files was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">fp</span><span class="p">):</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Path for support files is not valid&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkMethod</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Gaps filling method was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;VNN&#39;</span><span class="p">,</span> <span class="s">&#39;AVG_CUBE&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Gaps filling method not supported&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkBlocksN</span><span class="p">(</span><span class="n">blocksN</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">blocksN</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">blocksN</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Blocks number was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">checkInt</span><span class="p">(</span><span class="n">blocksN</span><span class="p">)</span> <span class="ow">or</span> <span class="n">blocksN</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Blocks number must be integer and positive or zero&#39;</span><span class="p">)</span>
         
 <span class="k">def</span> <span class="nf">checkBlockDir</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Blocks direction was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">d</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;X&#39;</span><span class="p">,</span> <span class="s">&#39;Y&#39;</span><span class="p">,</span> <span class="s">&#39;Z&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Blocks direction not supported&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkMaxS</span><span class="p">(</span><span class="n">maxS</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">maxS</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">maxS</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Max search cube side was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">checkInt</span><span class="p">(</span><span class="n">maxS</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">checkOdd</span><span class="p">(</span><span class="n">maxS</span><span class="p">)</span> <span class="ow">or</span> <span class="n">maxS</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Max search cube side must be integer, positive and odd&#39;</span><span class="p">)</span>
@@ -239,13 +239,13 @@
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Distance threshold must be greater or equal than 1&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkMinPct</span><span class="p">(</span><span class="n">minPct</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">minPct</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">minPct</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Acceptability percentage was not set&#39;</span><span class="p">)</span>            
     <span class="k">if</span> <span class="n">minPct</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Acceptability percentage must be positive or zero&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkSxyz</span><span class="p">(</span><span class="n">sxyz</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">sxyz</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">sxyz</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;vtkImageData spacing factors were not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sxyz</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">sxyz</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;auto&#39;</span><span class="p">]:</span>
@@ -258,31 +258,31 @@
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;All vtkImageData spacing factors must be positive&#39;</span><span class="p">)</span>
             
 <span class="k">def</span> <span class="nf">checkFilePath</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;File path was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;File path cannot be empty&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkPrecType</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Precision type was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;RP&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Precision type not supported&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkAccType</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Accuracy type was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">a</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;DA&#39;</span><span class="p">,</span> <span class="s">&#39;RA&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Accuracy type not supported&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkDist</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">d</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Distance was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">checkInt</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="ow">or</span> <span class="n">d</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Distance must be integer and positive&#39;</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">checkTimeVector</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Time vector was not set&#39;</span><span class="p">)</span>  
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Time vector cannot be empty&#39;</span><span class="p">)</span> 
@@ -290,7 +290,7 @@
 <span class="c">#        raise Exception(&#39;First time element must be 0&#39;)</span>
         
 <span class="k">def</span> <span class="nf">checkTimeDelay</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">t</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Time delay was not set&#39;</span><span class="p">)</span>     
 
 
@@ -304,28 +304,28 @@
     
 
 <span class="k">def</span> <span class="nf">checkCalibMethod</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Calibation method was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;eq_based&#39;</span><span class="p">,</span> <span class="s">&#39;maximize_NCCint&#39;</span><span class="p">,</span> <span class="s">&#39;maximize_NCC&#39;</span><span class="p">,</span> <span class="s">&#39;maximize_NCCfast&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Calibration method not supported&#39;</span><span class="p">)</span>
 
         
 <span class="k">def</span> <span class="nf">checkAlignFrames</span><span class="p">(</span><span class="n">alignFrames</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">alignFrames</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">alignFrames</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Frames for alignment were not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">min</span><span class="p">(</span><span class="n">alignFrames</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">max</span><span class="p">(</span><span class="n">alignFrames</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Some frame for alignment out of bounds&#39;</span><span class="p">)</span>
 
 
 <span class="k">def</span> <span class="nf">checkFillVoxMethod</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Voxel filling method was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;last&#39;</span><span class="p">,</span> <span class="s">&#39;avg&#39;</span><span class="p">,</span> <span class="s">&#39;max&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Voxel filling method not supported&#39;</span><span class="p">)</span>
 
         
 <span class="k">def</span> <span class="nf">checkVoxFrames</span><span class="p">(</span><span class="n">voxFrames</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">voxFrames</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">voxFrames</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Frames for voxel array reconstruction were not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">voxFrames</span><span class="p">,</span> <span class="nb">basestring</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">voxFrames</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;all&#39;</span><span class="p">,</span><span class="s">&#39;auto&#39;</span><span class="p">]:</span>
@@ -342,7 +342,7 @@
       
         
 <span class="k">def</span> <span class="nf">checkTemporalCalibMethod</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">method</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Temporal calibration method was not set&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;vert_motion_sync&#39;</span><span class="p">]:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s">&#39;Temporal calibration method not supported&#39;</span><span class="p">)</span>
@@ -752,7 +752,8 @@
             <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="n">Nprev</span> <span class="o">=</span> <span class="mi">0</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">Nprev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Nf</span><span class="p">[:</span><span class="n">i</span><span class="p">])</span>
+                <span class="c">#Nprev = np.sum(Nf[:i])</span>
+                <span class="n">Nprev</span> <span class="o">=</span> <span class="n">mkrs</span><span class="p">[</span><span class="n">mkrList</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">validKineFrames</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">validKineFrames</span><span class="p">,</span> <span class="n">Nprev</span> <span class="o">+</span> <span class="n">xInterpInd</span><span class="p">)</span>
             
             <span class="c"># Append marker data</span>
@@ -775,6 +776,7 @@
                 
                 <span class="n">mkrName</span> <span class="o">=</span> <span class="n">mkrList</span><span class="p">[</span><span class="n">m</span><span class="p">]</span>
                 <span class="n">mkrData</span> <span class="o">=</span> <span class="n">mkrs</span><span class="p">[</span><span class="n">mkrName</span><span class="p">][</span><span class="bp">self</span><span class="o">.</span><span class="n">validKineFrames</span><span class="p">,:]</span>
+                <span class="c">#mkrData = mkrs[mkrName]</span>
                 
                 <span class="c"># Loop for each coordinate </span>
                 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">C</span><span class="p">)):</span>
@@ -952,7 +954,7 @@
         <span class="n">checkUsFiles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usFiles</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         
         <span class="c"># Load image if necessary</span>
-        <span class="c">#if featuresFile == None:</span>
+        <span class="c">#if featuresFile is None:</span>
         <span class="c"># Read DICOM file</span>
         <span class="k">print</span> <span class="s">&#39;Reading DICOM file {0} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usFiles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">D</span><span class="p">,</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">readDICOM</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usFiles</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1156,7 +1158,7 @@
                 <span class="n">thZ</span> <span class="o">=</span> <span class="n">method_args</span><span class="p">[</span><span class="s">&#39;th_z&#39;</span><span class="p">]</span>
                 <span class="n">maxExpr</span> <span class="o">=</span> <span class="n">method_args</span><span class="p">[</span><span class="s">&#39;max_expr&#39;</span><span class="p">]</span>
                 <span class="c"># Get mask, if existing</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                     <span class="n">mask</span> <span class="o">=</span> <span class="bp">None</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">No</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -1594,7 +1596,7 @@
         <span class="k">print</span> <span class="s">&#39;Voxel array dimension: {0} x {1} x {2}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xl</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">yl</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">zl</span><span class="p">)</span>
         
     </div>
-<div class="viewcode-block" id="Process.initVoxelArray"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.initVoxelArray">[docs]</a>    <span class="k">def</span> <span class="nf">initVoxelArray</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Process.initVoxelArray_old"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.initVoxelArray_old">[docs]</a>    <span class="k">def</span> <span class="nf">initVoxelArray_old</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialize voxel array. It instantiate data for the voxel array grey values.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
     
@@ -1629,6 +1631,26 @@
         <span class="c"># Create voxel array for bool values indicating if the voxel belongs</span>
         <span class="c"># to the sequence of slices</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">internalV</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
+        
+        </div>
+<div class="viewcode-block" id="Process.initVoxelArray"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.initVoxelArray">[docs]</a>    <span class="k">def</span> <span class="nf">initVoxelArray</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize voxel array. It instantiate data for the voxel array grey values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="c"># Create voxel array for grey values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">VoxelArray3DFrom2DImages</span><span class="p">(</span><span class="n">dataType</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xl</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">yl</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">zl</span><span class="p">),</span> <span class="n">scales</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fx</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">fy</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">fz</span><span class="p">))</span>
+        
+        <span class="c"># Create voxel array for grey values indicating hox many times a voxel</span>
+        <span class="c"># has been written</span>
+        <span class="c">#self.contV = VoxelArray3D(dataType=np.uint8, dims=self.V.getDims())</span>
+        
+        <span class="c"># Create voxel array for bool values indicating if the voxel contains</span>
+        <span class="c"># raw data</span>
+        <span class="c">#self.usedV = self.contV</span>
+        
+        <span class="c"># Create voxel array for bool values indicating if the voxel belongs</span>
+        <span class="c"># to the sequence of slices</span>
+        <span class="c">#self.internalV = VoxelArray3D(dataType=np.bool, dims=self.V.getDims())</span>
         
         
     </div>
@@ -1693,7 +1715,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">fillVoxMethod</span> <span class="o">=</span> <span class="n">fillVoxMethod</span>
         
     </div>
-<div class="viewcode-block" id="Process.alignUSImages"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.alignUSImages">[docs]</a>    <span class="k">def</span> <span class="nf">alignUSImages</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Process.alignUSImages_old"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.alignUSImages_old">[docs]</a>    <span class="k">def</span> <span class="nf">alignUSImages_old</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Align US images in the global reference frame.</span>
 <span class="sd">        This task can take some time, and computation time is proportional</span>
 <span class="sd">        to the *total* number of US images to align.</span>
@@ -1754,7 +1776,7 @@
                     <span class="k">continue</span>
 <span class="c">#                if iR not in self.validKineFrames:</span>
 <span class="c">#                    continue</span>
-                <span class="k">if</span> <span class="n">iStart</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">iStart</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                     <span class="n">iStart</span> <span class="o">=</span> <span class="n">i</span>
                 <span class="c"># Create gray values</span>
                 <span class="n">I</span> <span class="o">=</span> <span class="n">pixelData2grey</span><span class="p">(</span><span class="n">D</span><span class="p">[:,</span><span class="n">i</span><span class="p">,:,:])</span>
@@ -1839,6 +1861,287 @@
         <span class="k">print</span> <span class="s">&#39;Estimate of pct of internal voxels: ({0}% total)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pctInternal</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">internalV</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">pctInternalEmpty</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">internalV</span> <span class="o">&amp;</span> <span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">usedV</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">internalV</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pctInternalEmpty</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">print</span> <span class="s">&#39;Estimate of pct of internal empty voxels: ({0}</span><span class="si">% i</span><span class="s">nternal)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pctInternalEmpty</span><span class="p">)</span>
+        
+        
+        </div>
+<div class="viewcode-block" id="Process.alignUSImages"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.alignUSImages">[docs]</a>    <span class="k">def</span> <span class="nf">alignUSImages</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">compoundWhenOverlap</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">Nr</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">Nrest</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">pctIntTh</span><span class="o">=</span><span class="mf">50.</span><span class="p">,</span> <span class="n">resetAdjRotoTranslAfterCompound</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">alwaysAcceptCompound</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Align US images in the global reference frame.</span>
+<span class="sd">        This task can take some time, and computation time is proportional</span>
+<span class="sd">        to the *total* number of US images to align.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c"># Check input validity</span>
+        <span class="n">checkImDim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">checkImDim</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">)</span>
+        <span class="n">checkPixel2mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixel2mmX</span><span class="p">)</span>
+        <span class="n">checkPixel2mm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pixel2mmY</span><span class="p">)</span>
+        <span class="n">checkUsFiles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">usFiles</span><span class="p">)</span>
+        <span class="n">checkIm2GlPose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">)</span>
+        <span class="n">checkGl2ConvPose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convR</span><span class="p">)</span>
+        <span class="n">checkFxyz</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">fx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fz</span><span class="p">])</span>
+        <span class="c"># xl, xo</span>
+        <span class="n">checkV</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">)</span>
+<span class="c">#        checkV(self.contV)</span>
+<span class="c">#        checkV(self.usedV)</span>
+<span class="c">#        checkV(self.internalV)</span>
+        <span class="n">checkWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="p">)</span>
+        <span class="n">checkStep</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">)</span>
+        <span class="n">checkFillVoxMethod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fillVoxMethod</span><span class="p">)</span>
+
+        <span class="c"># Create if necessary and check alignFrames</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">alignFrames</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">alignFrames</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">checkAlignFrames</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">alignFrames</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="c"># Create pixel coordinates (in mm) in image reference frame</span>
+        <span class="k">print</span> <span class="s">&#39;Creating pixel 3D coordinates in image reference frame ...&#39;</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">createImageCoords</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel2mmY</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel2mmX</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;Pixel 3D coordinates calculated&#39;</span>
+        
+        <span class="c"># Calculate image corners coordinates</span>
+        <span class="n">pc</span> <span class="o">=</span> <span class="n">createImageCorners</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">w</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel2mmX</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixel2mmY</span><span class="p">)</span>
+        
+        <span class="c"># Calculate position for all the pixels, for all the time instant</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">fileNames</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">usFiles</span>
+        <span class="n">ioffset</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ivx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">voxFrames</span><span class="p">)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="s">&#39;write_main_VA&#39;</span>
+<span class="c">#        adjRconv = np.eye(4)</span>
+        <span class="n">Aa</span><span class="p">,</span> <span class="n">ta</span><span class="p">,</span> <span class="n">ca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">fileNames</span><span class="p">)):</span>
+            <span class="c"># Read DICOM file</span>
+            <span class="k">print</span> <span class="s">&#39;Reading DICOM file {0} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fileNames</span><span class="p">[</span><span class="n">f</span><span class="p">])</span>
+            <span class="n">D</span><span class="p">,</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">readDICOM</span><span class="p">(</span><span class="n">fileNames</span><span class="p">[</span><span class="n">f</span><span class="p">])</span>
+            <span class="k">print</span> <span class="s">&#39;DICOM file read&#39;</span>
+            <span class="n">Ni</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">iStart</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">compoundWhenOverlap</span><span class="p">:</span>
+                <span class="n">secV</span> <span class="o">=</span> <span class="n">VoxelArray3DFrom2DImages</span><span class="p">(</span><span class="n">dataType</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fx</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">fy</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">fz</span><span class="p">))</span>               
+                <span class="n">pctIntVect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+                <span class="n">iIntVect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+                <span class="n">xMinPrev</span><span class="p">,</span> <span class="n">yMinPrev</span><span class="p">,</span> <span class="n">zMinPrev</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+                <span class="n">xMaxPrev</span><span class="p">,</span> <span class="n">yMaxPrev</span><span class="p">,</span> <span class="n">zMaxPrev</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+                <span class="n">iTemp</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Ni</span><span class="p">:</span>
+                <span class="c"># Calculate absolute index</span>
+                <span class="n">iR</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">ioffset</span>
+                <span class="c"># Check if frame has to be realigned</span>
+                <span class="k">if</span> <span class="n">iR</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ivx</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">iR</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">alignFrames</span><span class="p">:</span>
+                    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">iStart</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">iStart</span> <span class="o">=</span> <span class="n">i</span>
+                <span class="c"># Create gray values</span>
+                <span class="n">I</span> <span class="o">=</span> <span class="n">pixelData2grey</span><span class="p">(</span><span class="n">D</span><span class="p">[:,</span><span class="n">i</span><span class="p">,:,:])</span>
+                <span class="k">print</span> <span class="s">&#39;Inserting oriented slice for instant {0}/{1} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Ni</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c">#                # Calculate final adjusting matrix</span>
+<span class="c">#                adjR = np.dot(adjRconv, self.convR)</span>
+                <span class="c"># Calculate coordinates of image corners </span>
+                <span class="n">pcg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convR</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="n">iR</span><span class="p">,:,:]),</span><span class="n">pc</span><span class="p">)</span> <span class="c"># mm</span>
+                <span class="n">xc</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pcg</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fx</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">xo</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="c"># 1 x 4</span>
+                <span class="n">yc</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pcg</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fy</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">yo</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+                <span class="n">zc</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pcg</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fz</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">zo</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+                <span class="c">#xyzc = np.dot(adjRconv,np.array((xc,yc,zc,np.ones(xc.shape))))</span>
+                <span class="n">xyzc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Aa</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">xc</span><span class="p">,</span><span class="n">yc</span><span class="p">,</span><span class="n">zc</span><span class="p">,))</span> <span class="o">-</span> <span class="n">ca</span><span class="p">)</span> <span class="o">+</span> <span class="n">ta</span> <span class="o">+</span> <span class="n">ca</span>
+                <span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">zc</span> <span class="o">=</span> <span class="n">xyzc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">xyzc</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">xyzc</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>
+                <span class="n">xc</span> <span class="o">=</span> <span class="n">xc</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+                <span class="n">yc</span> <span class="o">=</span> <span class="n">yc</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+                <span class="n">zc</span> <span class="o">=</span> <span class="n">zc</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+                <span class="c"># Calculate frames position in space</span>
+                <span class="n">pg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">convR</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="n">iR</span><span class="p">,:,:]),</span><span class="n">p</span><span class="p">)</span> <span class="c"># mm</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pg</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fx</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">xo</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span> <span class="c"># 1 x Np</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pg</span><span class="p">[</span><span class="mi">1</span><span class="p">,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fy</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">yo</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pg</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">fz</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">zo</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<span class="c">#                xyz = np.dot(adjRconv,np.array((x,y,z,np.ones(x.shape))))</span>
+                <span class="n">xyz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Aa</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,))</span> <span class="o">-</span> <span class="n">ca</span><span class="p">)</span> <span class="o">+</span> <span class="n">ta</span> <span class="o">+</span> <span class="n">ca</span>
+                <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">,:],</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">,:]</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+                <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">round</span><span class="p">()</span>
+                <span class="c"># Transform coordinates to indices</span>
+                <span class="n">idxV</span> <span class="o">=</span> <span class="n">xyz2idx</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">xl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">yl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">zl</span><span class="p">)</span>
+                <span class="c"># Check intersection persentage between current frame and previous silhouette</span>
+                <span class="n">pctInt</span> <span class="o">=</span> <span class="mf">100.</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getSilhouetteVoxelArray</span><span class="p">()</span><span class="o">.</span><span class="n">getDataByIdx</span><span class="p">(</span><span class="n">idxV</span><span class="p">))</span> <span class="o">/</span> <span class="n">idxV</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">print</span> <span class="s">&#39;Intersection percentage (between main voxel-array and current image): </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">pctInt</span>
+                
+                <span class="c"># Manage state</span>
+                <span class="k">if</span> <span class="n">compoundWhenOverlap</span><span class="p">:</span>
+                    <span class="n">skipCurrent</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s">&#39;write_main_VA&#39;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Ni</span> <span class="o">-</span> <span class="n">Nr</span><span class="p">:</span>
+                            <span class="k">if</span> <span class="n">pctInt</span> <span class="o">&gt;=</span> <span class="n">pctIntTh</span> <span class="ow">and</span> <span class="n">f</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+                                <span class="c"># Start writing to secondary VA</span>
+                                <span class="n">state</span> <span class="o">=</span> <span class="s">&#39;write_secondary_VA&#39;</span>
+                                <span class="n">iTemp</span> <span class="o">=</span> <span class="n">i</span>
+                                <span class="k">print</span> <span class="s">&#39;Started writing to secondary voxel-array ...&#39;</span>
+                    <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s">&#39;write_secondary_VA&#39;</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">iTemp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">Nr</span><span class="p">:</span>
+                            <span class="c"># Add some statistics about current frame</span>
+                            <span class="n">pctIntVect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pctIntVect</span><span class="p">,</span> <span class="n">pctInt</span><span class="p">)</span>
+                            <span class="n">iIntVect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">iIntVect</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="c"># Nr frames assessed</span>
+                            <span class="c"># can change criteria here, and can use pctIntVect, iIntVect</span>
+                            <span class="k">print</span> <span class="n">iIntVect</span>
+                            <span class="k">print</span> <span class="n">pctIntVect</span>
+<span class="c">#                            raw_input(&#39;&#39;)</span>
+                            <span class="c">#criteria = True</span>
+                            <span class="n">criteria</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pctIntVect</span> <span class="o">&gt;</span> <span class="n">pctIntTh</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Nr</span>
+                            <span class="k">if</span> <span class="n">criteria</span><span class="p">:</span>
+                                <span class="n">xa2</span><span class="p">,</span> <span class="n">ya2</span><span class="p">,</span> <span class="n">za2</span> <span class="o">=</span> <span class="n">xMinPrev</span><span class="p">,</span> <span class="n">yMinPrev</span><span class="p">,</span> <span class="n">zMinPrev</span>
+                                <span class="n">xb2</span><span class="p">,</span> <span class="n">yb2</span><span class="p">,</span> <span class="n">zb2</span> <span class="o">=</span> <span class="n">xMaxPrev</span><span class="p">,</span> <span class="n">yMaxPrev</span><span class="p">,</span> <span class="n">zMaxPrev</span>
+                                <span class="c"># Slice main silhouette voxel-array using borders of second one</span>
+                                <span class="n">subInternalV1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getSilhouetteVoxelArray</span><span class="p">()</span><span class="o">.</span><span class="n">getSubVoxelArray</span><span class="p">(</span><span class="n">xa2</span><span class="p">,</span> <span class="n">xb2</span><span class="p">,</span> <span class="n">ya2</span><span class="p">,</span> <span class="n">yb2</span><span class="p">,</span> <span class="n">za2</span><span class="p">,</span> <span class="n">zb2</span><span class="p">)</span>
+                                <span class="c"># Find smallest parallelepipedon edges containing sliced main silhouette</span>
+                                <span class="n">xa1</span><span class="p">,</span> <span class="n">xb1</span><span class="p">,</span> <span class="n">ya1</span><span class="p">,</span> <span class="n">yb1</span><span class="p">,</span> <span class="n">za1</span><span class="p">,</span> <span class="n">zb1</span> <span class="o">=</span> <span class="n">subInternalV1</span><span class="o">.</span><span class="n">getCoordsSmallestWrappingParallelepipedon</span><span class="p">()</span>
+                                <span class="n">xa1</span> <span class="o">+=</span> <span class="n">xa2</span><span class="p">;</span> <span class="n">xb1</span> <span class="o">+=</span> <span class="n">xa2</span>
+                                <span class="n">ya1</span> <span class="o">+=</span> <span class="n">ya2</span><span class="p">;</span> <span class="n">yb1</span> <span class="o">+=</span> <span class="n">ya2</span>
+                                <span class="n">za1</span> <span class="o">+=</span> <span class="n">za2</span><span class="p">;</span> <span class="n">zb1</span> <span class="o">+=</span> <span class="n">za2</span>
+                                <span class="c"># Restrict region of interest</span>
+                                <span class="n">rx</span><span class="p">,</span> <span class="n">ry</span><span class="p">,</span> <span class="n">rz</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+                                <span class="n">xra1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">xa1</span> <span class="o">+</span> <span class="n">xb1</span><span class="p">)</span> <span class="o">-</span> <span class="n">rx</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">xb1</span> <span class="o">-</span> <span class="n">xa1</span><span class="p">)</span>
+                                <span class="n">xrb1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">xa1</span> <span class="o">+</span> <span class="n">xb1</span><span class="p">)</span> <span class="o">+</span> <span class="n">rx</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">xb1</span> <span class="o">-</span> <span class="n">xa1</span><span class="p">)</span>
+                                <span class="n">yra1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">ya1</span> <span class="o">+</span> <span class="n">yb1</span><span class="p">)</span> <span class="o">-</span> <span class="n">ry</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">yb1</span> <span class="o">-</span> <span class="n">ya1</span><span class="p">)</span>
+                                <span class="n">yrb1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">ya1</span> <span class="o">+</span> <span class="n">yb1</span><span class="p">)</span> <span class="o">+</span> <span class="n">ry</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">yb1</span> <span class="o">-</span> <span class="n">ya1</span><span class="p">)</span>
+                                <span class="n">zra1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">za1</span> <span class="o">+</span> <span class="n">zb1</span><span class="p">)</span> <span class="o">-</span> <span class="n">rz</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">zb1</span> <span class="o">-</span> <span class="n">za1</span><span class="p">)</span>
+                                <span class="n">zrb1</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">za1</span> <span class="o">+</span> <span class="n">zb1</span><span class="p">)</span> <span class="o">+</span> <span class="n">rz</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">zb1</span> <span class="o">-</span> <span class="n">za1</span><span class="p">)</span>
+                                <span class="c"># Slice main voxel-array using final borders</span>
+                                <span class="n">subV1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getSubVoxelArray</span><span class="p">(</span><span class="n">xra1</span><span class="p">,</span> <span class="n">xrb1</span><span class="p">,</span> <span class="n">yra1</span><span class="p">,</span> <span class="n">yrb1</span><span class="p">,</span> <span class="n">zra1</span><span class="p">,</span> <span class="n">zrb1</span><span class="p">)</span>
+                                <span class="c"># Slice secondary voxel-array using final borders</span>
+                                <span class="n">subV2</span> <span class="o">=</span> <span class="n">secV</span><span class="o">.</span><span class="n">getSubVoxelArray</span><span class="p">(</span><span class="n">xra1</span><span class="o">-</span><span class="n">xa2</span><span class="p">,</span> <span class="n">xrb1</span><span class="o">-</span><span class="n">xa2</span><span class="p">,</span> <span class="n">yra1</span><span class="o">-</span><span class="n">ya2</span><span class="p">,</span> <span class="n">yrb1</span><span class="o">-</span><span class="n">ya2</span><span class="p">,</span> <span class="n">zra1</span><span class="o">-</span><span class="n">za2</span><span class="p">,</span> <span class="n">zrb1</span><span class="o">-</span><span class="n">za2</span><span class="p">)</span>
+                                <span class="c"># Fill gaps for both sub-volumes</span>
+                                <span class="n">subV1</span><span class="o">.</span><span class="n">fillGaps</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">blocksN</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">blockDir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">blockDir</span><span class="p">,</span> <span class="n">distTh</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distTh</span><span class="p">,</span> <span class="n">maxS</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxS</span><span class="p">,</span> <span class="n">minPct</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">minPct</span><span class="p">)</span>
+                                <span class="n">subV2</span><span class="o">.</span><span class="n">fillGaps</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">blocksN</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">blockDir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">blockDir</span><span class="p">,</span> <span class="n">distTh</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distTh</span><span class="p">,</span> <span class="n">maxS</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxS</span><span class="p">,</span> <span class="n">minPct</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">minPct</span><span class="p">)</span>                                
+                                <span class="c"># Apply 3D registration</span>
+                                <span class="n">V1</span> <span class="o">=</span> <span class="n">subV1</span><span class="o">.</span><span class="n">getNumpyArray3D</span><span class="p">()</span>
+                                <span class="n">V2</span> <span class="o">=</span> <span class="n">subV2</span><span class="o">.</span><span class="n">getNumpyArray3D</span><span class="p">()</span>
+                                <span class="n">S1</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="n">subV1</span><span class="o">.</span><span class="n">getSilhouetteVoxelArray</span><span class="p">()</span><span class="o">.</span><span class="n">getNumpyArray3D</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+                                <span class="n">S2</span> <span class="o">=</span> <span class="mi">255</span><span class="o">*</span><span class="n">subV2</span><span class="o">.</span><span class="n">getSilhouetteVoxelArray</span><span class="p">()</span><span class="o">.</span><span class="n">getNumpyArray3D</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+                                <span class="k">print</span> <span class="s">&#39;Performing 3D registration ...&#39;</span>
+                                <span class="n">_A</span><span class="p">,</span> <span class="n">_t</span><span class="p">,</span> <span class="n">_c</span> <span class="o">=</span> <span class="n">compound3D</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span> <span class="n">V2</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="p">(</span><span class="n">xra1</span><span class="p">,</span> <span class="n">yra1</span><span class="p">,</span> <span class="n">zra1</span><span class="p">))</span>
+                                <span class="k">if</span> <span class="n">alwaysAcceptCompound</span><span class="p">:</span>
+                                    <span class="n">Aa</span><span class="p">,</span> <span class="n">ta</span><span class="p">,</span> <span class="n">ca</span> <span class="o">=</span> <span class="n">_A</span><span class="p">,</span> <span class="n">_t</span><span class="p">,</span> <span class="n">_c</span>
+                                <span class="k">else</span><span class="p">:</span>
+                                    <span class="n">choice</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&#39;Keep it? (y/n, n=use previous)? &#39;</span><span class="p">)</span>
+                                    <span class="k">if</span> <span class="n">choice</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span><span class="p">:</span>
+                                        <span class="c">#Aa, ta, ca = _A, _t, _c + np.array((xra1, yra1, zra1))[:,None]</span>
+                                        <span class="n">Aa</span><span class="p">,</span> <span class="n">ta</span><span class="p">,</span> <span class="n">ca</span> <span class="o">=</span> <span class="n">_A</span><span class="p">,</span> <span class="n">_t</span><span class="p">,</span> <span class="n">_c</span>
+                                <span class="k">print</span> <span class="s">&#39;3D registration performed&#39;</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="c"># Do not apply registration</span>
+                                <span class="k">print</span> <span class="s">&#39;3D registration will not be applied&#39;</span>
+                            <span class="c"># Reset to default state which also ignores intersection (otherwise infinite loop)</span>
+                            <span class="n">state</span> <span class="o">=</span> <span class="s">&#39;write_main_VA_ignore_int&#39;</span>
+                            <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="c"># temporarily save i into j</span>
+                            <span class="n">i</span> <span class="o">=</span> <span class="n">iTemp</span>
+                            <span class="n">iTemp</span> <span class="o">=</span> <span class="n">j</span>
+                            <span class="k">print</span> <span class="s">&#39;Returning to frame where writing to secondary frame started ...&#39;</span>
+                            <span class="n">skipCurrent</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s">&#39;write_main_VA_ignore_int&#39;</span><span class="p">:</span>
+                        <span class="k">print</span> <span class="n">i</span><span class="p">,</span> <span class="n">iTemp</span>
+                        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">iTemp</span><span class="p">:</span>
+                            <span class="c"># Reset to default state</span>
+                            <span class="n">state</span> <span class="o">=</span> <span class="s">&#39;write_main_VA&#39;</span>
+                            <span class="n">iTemp</span> <span class="o">=</span> <span class="bp">None</span>
+                            <span class="n">pctIntVect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+                            <span class="n">iIntVect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+                            <span class="n">secV</span> <span class="o">=</span> <span class="n">VoxelArray3DFrom2DImages</span><span class="p">(</span><span class="n">dataType</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">scales</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fx</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">fy</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">fz</span><span class="p">))</span>
+                            <span class="n">xMinPrev</span><span class="p">,</span> <span class="n">yMinPrev</span><span class="p">,</span> <span class="n">zMinPrev</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+                            <span class="n">xMaxPrev</span><span class="p">,</span> <span class="n">yMaxPrev</span><span class="p">,</span> <span class="n">zMaxPrev</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+                            <span class="k">if</span> <span class="n">resetAdjRotoTranslAfterCompound</span><span class="p">:</span>
+                                <span class="n">Aa</span><span class="p">,</span> <span class="n">ta</span><span class="p">,</span> <span class="n">ca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+                            <span class="k">print</span> <span class="s">&#39;Started writing to main voxel-array ...&#39;</span>
+                            <span class="n">V1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getNumpyArray3D</span><span class="p">()</span>
+                            <span class="kn">import</span> <span class="nn">SimpleITK</span> <span class="kn">as</span> <span class="nn">sitk</span>
+                            <span class="n">sitk</span><span class="o">.</span><span class="n">Show</span><span class="p">(</span><span class="n">sitk</span><span class="o">.</span><span class="n">GetImageFromArray</span><span class="p">(</span><span class="n">V1</span><span class="p">))</span>
+                    <span class="k">if</span> <span class="n">skipCurrent</span><span class="p">:</span>  <span class="c"># go to next iteration</span>
+                        <span class="k">print</span> <span class="s">&#39;Skipping current frame ...&#39;</span>
+                        <span class="k">continue</span>
+                
+                <span class="c"># Print current state</span>
+                <span class="k">print</span> <span class="s">&#39;-- STATE: </span><span class="si">%s</span><span class="s">&#39;</span> <span class="o">%</span> <span class="n">state</span>
+                <span class="c"># Select voxel array upon state</span>
+                <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s">&#39;write_main_VA&#39;</span> <span class="ow">or</span> <span class="n">state</span> <span class="o">==</span> <span class="s">&#39;write_main_VA_ignore_int&#39;</span><span class="p">:</span>
+                    <span class="c"># Calculate indices to write</span>
+                    <span class="k">pass</span> <span class="c"># done earlier</span>
+                    <span class="c"># Calculate image corners</span>
+                    <span class="n">corners</span> <span class="o">=</span> <span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">zc</span><span class="p">)</span>
+                    <span class="c"># Select main voxel-array</span>
+                    <span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span>
+                <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s">&#39;write_secondary_VA&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">iTemp</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">Nrest</span><span class="p">:</span>
+                        <span class="c"># Automatically extend secondary voxel-array, if needed</span>
+                        <span class="n">xMin</span><span class="p">,</span> <span class="n">xMax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">xl</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+                        <span class="n">yMin</span><span class="p">,</span> <span class="n">yMax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">())),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">yl</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+                        <span class="n">zMin</span><span class="p">,</span> <span class="n">zMax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">z</span><span class="o">.</span><span class="n">min</span><span class="p">())),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">zl</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">z</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+                        <span class="k">if</span> <span class="n">xMinPrev</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">yMinPrev</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">zMinPrev</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                            <span class="n">xMinPrev</span><span class="p">,</span> <span class="n">yMinPrev</span><span class="p">,</span> <span class="n">zMinPrev</span> <span class="o">=</span> <span class="n">xMin</span><span class="p">,</span> <span class="n">yMin</span><span class="p">,</span> <span class="n">zMin</span>
+                        <span class="k">if</span> <span class="n">xMaxPrev</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">yMaxPrev</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">zMaxPrev</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                            <span class="n">xMaxPrev</span><span class="p">,</span> <span class="n">yMaxPrev</span><span class="p">,</span> <span class="n">zMaxPrev</span> <span class="o">=</span> <span class="n">xMax</span><span class="p">,</span> <span class="n">yMax</span><span class="p">,</span> <span class="n">zMax</span>
+                        <span class="n">xa</span><span class="p">,</span> <span class="n">xb</span> <span class="o">=</span> <span class="n">xMin</span> <span class="o">-</span> <span class="n">xMinPrev</span><span class="p">,</span> <span class="n">xMax</span> <span class="o">-</span> <span class="n">xMinPrev</span>
+                        <span class="n">ya</span><span class="p">,</span> <span class="n">yb</span> <span class="o">=</span> <span class="n">yMin</span> <span class="o">-</span> <span class="n">yMinPrev</span><span class="p">,</span> <span class="n">yMax</span> <span class="o">-</span> <span class="n">yMinPrev</span>
+                        <span class="n">za</span><span class="p">,</span> <span class="n">zb</span> <span class="o">=</span> <span class="n">zMin</span> <span class="o">-</span> <span class="n">zMinPrev</span><span class="p">,</span> <span class="n">zMax</span> <span class="o">-</span> <span class="n">zMinPrev</span>
+                        <span class="c">#print secV.V.shape[0], np.prod(secV.getDims())</span>
+                        <span class="n">secV</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span> <span class="n">xb</span><span class="p">,</span> <span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">za</span><span class="p">,</span> <span class="n">zb</span><span class="p">)</span>
+                        <span class="c">#print secV.V.shape[0], np.prod(secV.getDims())</span>
+                        <span class="n">xMinPrev</span><span class="p">,</span> <span class="n">yMinPrev</span><span class="p">,</span> <span class="n">zMinPrev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="n">xMin</span><span class="p">,</span><span class="n">xMinPrev</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="n">yMin</span><span class="p">,</span><span class="n">yMinPrev</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">((</span><span class="n">zMin</span><span class="p">,</span><span class="n">zMinPrev</span><span class="p">))</span>
+                        <span class="n">xMaxPrev</span><span class="p">,</span> <span class="n">yMaxPrev</span><span class="p">,</span> <span class="n">zMaxPrev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="n">xMax</span><span class="p">,</span><span class="n">xMaxPrev</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="n">yMax</span><span class="p">,</span><span class="n">yMaxPrev</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">((</span><span class="n">zMax</span><span class="p">,</span><span class="n">zMaxPrev</span><span class="p">))</span>
+                        <span class="c"># Calculate indices to write</span>
+                        <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">z2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">xMinPrev</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">yMinPrev</span><span class="p">,</span> <span class="n">z</span> <span class="o">-</span> <span class="n">zMinPrev</span>
+                        <span class="n">xl2</span><span class="p">,</span> <span class="n">yl2</span><span class="p">,</span> <span class="n">zl2</span> <span class="o">=</span> <span class="n">secV</span><span class="o">.</span><span class="n">getDims</span><span class="p">()</span>
+                        <span class="n">idxV</span> <span class="o">=</span> <span class="n">xyz2idx</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">xl2</span><span class="p">,</span> <span class="n">yl2</span><span class="p">,</span> <span class="n">zl2</span><span class="p">)</span>
+                        <span class="c"># Calculate image corners</span>
+                        <span class="n">corners</span> <span class="o">=</span> <span class="p">(</span><span class="n">xc</span><span class="o">-</span><span class="n">xMinPrev</span><span class="p">,</span> <span class="n">yc</span><span class="o">-</span><span class="n">yMinPrev</span><span class="p">,</span> <span class="n">zc</span><span class="o">-</span><span class="n">zMinPrev</span><span class="p">)</span>
+                        <span class="c"># Select secondary voxel-array</span>
+                        <span class="n">V</span> <span class="o">=</span> <span class="n">secV</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">V</span> <span class="o">=</span> <span class="bp">None</span>
+                <span class="k">if</span> <span class="n">V</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="c"># Write to selected voxel-array</span>
+                    <span class="n">V</span><span class="o">.</span><span class="n">writeImageByIdx</span><span class="p">(</span><span class="n">idxV</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fillVoxMethod</span><span class="p">)</span>
+                    <span class="k">del</span> <span class="n">I</span>
+                    <span class="c"># Create wrapper for selected voxel-array</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">iStart</span><span class="p">:</span>
+                        <span class="n">cornersPrev</span> <span class="o">=</span> <span class="n">corners</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">cornersPrev</span> <span class="o">=</span> <span class="bp">None</span>
+                    <span class="n">updateWrapper</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">Ni</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">:</span>
+                            <span class="n">updateWrapper</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">if</span> <span class="n">updateWrapper</span><span class="p">:</span>
+                        <span class="n">V</span><span class="o">.</span><span class="n">updateWrapper</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wrapper</span><span class="p">,</span> <span class="n">corners</span><span class="p">,</span> <span class="n">cornersPrev</span><span class="o">=</span><span class="n">cornersPrev</span><span class="p">)</span>
+                <span class="c"># Update frame index</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+                
+            <span class="n">ioffset</span> <span class="o">+=</span> <span class="n">Ni</span>
+            <span class="k">del</span> <span class="n">D</span><span class="p">,</span> <span class="n">ds</span>       
+            
+        
+<span class="c">#        self.usedV.setAllDataByNumpy1D(self.contV.getNumpyArray1D().astype(np.bool))</span>
+<span class="c">#        if self.wrapper &lt;&gt; &#39;none&#39;:</span>
+<span class="c">#            del xcPrev, ycPrev, zcPrev, idxInternal, xcInternal, ycInternal, zcInternal</span>
+        <span class="n">elapsed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t</span>
+        <span class="k">print</span> <span class="s">&#39;Elapsed time: {0} s&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">elapsed</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getNumpyArray1D</span><span class="p">()</span>
+        <span class="n">usedV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getCounterVoxelArray</span><span class="p">()</span><span class="o">.</span><span class="n">getNumpyArray1D</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span>
+        <span class="n">internalV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getSilhouetteVoxelArray</span><span class="p">()</span><span class="o">.</span><span class="n">getNumpyArray1D</span><span class="p">()</span>
+        <span class="n">idxEmptyN</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">~</span><span class="n">usedV</span><span class="p">)</span>
+        <span class="n">pctEmpty</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">idxEmptyN</span> <span class="o">/</span> <span class="n">V</span><span class="o">.</span><span class="n">size</span>
+        <span class="k">print</span> <span class="s">&#39;Pct of empty voxels: ({0}% total)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pctEmpty</span><span class="p">)</span>
+        <span class="n">pctInternal</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">internalV</span><span class="p">)</span> <span class="o">/</span> <span class="n">V</span><span class="o">.</span><span class="n">size</span>
+        <span class="k">print</span> <span class="s">&#39;Estimate of pct of internal voxels: ({0}% total)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pctInternal</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">internalV</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">pctInternalEmpty</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">internalV</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">usedV</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">internalV</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">pctInternalEmpty</span> <span class="o">=</span> <span class="mf">0.</span>
         <span class="k">print</span> <span class="s">&#39;Estimate of pct of internal empty voxels: ({0}</span><span class="si">% i</span><span class="s">nternal)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">pctInternalEmpty</span><span class="p">)</span>
@@ -1929,7 +2232,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">minPct</span> <span class="o">=</span> <span class="n">minPct</span>
             
     </div>
-<div class="viewcode-block" id="Process.fillGaps"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.fillGaps">[docs]</a>    <span class="k">def</span> <span class="nf">fillGaps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Process.fillGaps_old"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.fillGaps_old">[docs]</a>    <span class="k">def</span> <span class="nf">fillGaps_old</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Run the gap-filling procedure.</span>
 <span class="sd">        This task can take some time.</span>
 <span class="sd">        </span>
@@ -2003,7 +2306,7 @@
                     <span class="n">reshV</span> <span class="o">=</span> <span class="p">(</span><span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">usedV</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">internalV</span><span class="p">)[</span><span class="n">cLims</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">cLims</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">cLims</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">cLims</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">cLims</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">cLims</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
                     <span class="n">reshV2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="n">cLims</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">cLims</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">cLims</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">cLims</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">cLims</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]:</span><span class="n">cLims</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span>
                 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">threshold</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">distTh</span> <span class="o">==</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">distTh</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
                     <span class="n">idxV</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">reshV</span><span class="p">,</span> <span class="n">return_distances</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">edt</span><span class="p">,</span> <span class="n">idxV</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">reshV</span><span class="p">,</span> <span class="n">return_distances</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -2066,6 +2369,29 @@
         <span class="k">print</span> <span class="s">&#39;Empty voxels filled when possible&#39;</span>
         <span class="k">return</span> <span class="n">pctInternalEmpty</span>
         
+</div>
+<div class="viewcode-block" id="Process.fillGaps"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.fillGaps">[docs]</a>    <span class="k">def</span> <span class="nf">fillGaps</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Run the gap-filling procedure.</span>
+<span class="sd">        This task can take some time.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    
+        <span class="c"># Check input validity</span>
+        <span class="n">checkMethod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+        <span class="n">checkBlocksN</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocksN</span><span class="p">)</span>
+        <span class="n">checkMaxS</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">maxS</span><span class="p">)</span>
+        <span class="n">checkBlockDir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blockDir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;VNN&#39;</span><span class="p">:</span>
+            <span class="n">checkDistTh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">distTh</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">&#39;AVG_CUBE&#39;</span><span class="p">:</span>
+            <span class="n">checkMinPct</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">minPct</span><span class="p">)</span>        
+        <span class="n">checkV</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">)</span>
+<span class="c">#        checkV(self.usedV)</span>
+<span class="c">#        checkV(self.internalV)</span>
+        
+        <span class="n">pctInternalEmpty</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">fillGaps</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="n">blocksN</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">blocksN</span><span class="p">,</span> <span class="n">blockDir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">blockDir</span><span class="p">,</span> <span class="n">distTh</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">distTh</span><span class="p">,</span> <span class="n">maxS</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">maxS</span><span class="p">,</span> <span class="n">minPct</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">minPct</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pctInternalEmpty</span>
+        
     </div>
 <div class="viewcode-block" id="Process.getVoxelPhysicalSize"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.getVoxelPhysicalSize">[docs]</a>    <span class="k">def</span> <span class="nf">getVoxelPhysicalSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Get physical size for a single voxel.</span>
@@ -2118,7 +2444,7 @@
             <span class="k">print</span> <span class="s">&#39;vtkImageData spacing factors set to: </span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">, </span><span class="si">%d</span><span class="s">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sz</span><span class="p">)</span>
         
     </div>
-<div class="viewcode-block" id="Process.exportVoxelArrayToVTI"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.exportVoxelArrayToVTI">[docs]</a>    <span class="k">def</span> <span class="nf">exportVoxelArrayToVTI</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outFile</span><span class="p">):</span>
+<div class="viewcode-block" id="Process.exportVoxelArrayToVTI_old"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.exportVoxelArrayToVTI_old">[docs]</a>    <span class="k">def</span> <span class="nf">exportVoxelArrayToVTI_old</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outFile</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Export grey-values voxel-array to VTI file.</span>
 <span class="sd">        </span>
 <span class="sd">        VTI is a VTK file format (see `here &lt;http://www.cacr.caltech.edu/~slombey/asci/vtk/vtk_formats.simple.html&gt;`_).</span>
@@ -2144,10 +2470,38 @@
         <span class="k">print</span> <span class="s">&#39;Saving VTI file for grey values voxel array {0} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outFile</span><span class="p">)</span>
         <span class="n">vtkImageData2vti</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span> <span class="n">vtkV</span><span class="p">)</span>    
         <span class="k">print</span> <span class="s">&#39;VTI file saved&#39;</span>
+        
+        </div>
+<div class="viewcode-block" id="Process.exportVoxelArrayToVTI"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.exportVoxelArrayToVTI">[docs]</a>    <span class="k">def</span> <span class="nf">exportVoxelArrayToVTI</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outFile</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Export grey-values voxel-array to VTI file.</span>
+<span class="sd">        </span>
+<span class="sd">        VTI is a VTK file format (see `here &lt;http://www.cacr.caltech.edu/~slombey/asci/vtk/vtk_formats.simple.html&gt;`_).</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        outFile : str</span>
+<span class="sd">            Full file path for the VTI file to be saved.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="c"># Check input validity</span>
+        <span class="n">checkFilePath</span><span class="p">(</span><span class="n">outFile</span><span class="p">)</span>
+        <span class="n">checkSxyz</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">sx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sz</span><span class="p">])</span>
+        <span class="n">checkV</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="p">)</span>
+        <span class="c"># xl</span>
+        
+        <span class="c"># Create vtkImageData object for grey values voxel array</span>
+        <span class="k">print</span> <span class="s">&#39;Creating vtkImageData object for grey values voxel array...&#39;</span>
+        <span class="n">vtkV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getVtkImageData</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">sx</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sz</span><span class="p">),</span> <span class="n">vtk</span><span class="o">.</span><span class="n">VTK_UNSIGNED_CHAR</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;vtkImageData object created&#39;</span>
+        <span class="c"># Write grey values voxel array to file</span>
+        <span class="k">print</span> <span class="s">&#39;Saving VTI file for grey values voxel array {0} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outFile</span><span class="p">)</span>
+        <span class="n">vtkImageData2vti</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span> <span class="n">vtkV</span><span class="p">)</span>    
+        <span class="k">print</span> <span class="s">&#39;VTI file saved&#39;</span>
 
         
     </div>
-<div class="viewcode-block" id="Process.exportVoxelArraySilhouetteToVTI"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.exportVoxelArraySilhouetteToVTI">[docs]</a>    <span class="k">def</span> <span class="nf">exportVoxelArraySilhouetteToVTI</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outFile</span><span class="p">):</span>
+<div class="viewcode-block" id="Process.exportVoxelArraySilhouetteToVTI_old"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.exportVoxelArraySilhouetteToVTI_old">[docs]</a>    <span class="k">def</span> <span class="nf">exportVoxelArraySilhouetteToVTI_old</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outFile</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Export US scan silhouette voxel-array to VTI file.</span>
 <span class="sd">        </span>
 <span class="sd">        Parameters</span>
@@ -2165,6 +2519,31 @@
         <span class="c"># Create vtkImageData object for silhouette voxel array</span>
         <span class="k">print</span> <span class="s">&#39;Creating vtkImageData object for silhouette values voxel array...&#39;</span>
         <span class="n">vtkInternalV</span> <span class="o">=</span> <span class="n">nparray2vtkImageData</span><span class="p">(</span><span class="mi">255</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">internalV</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">xl</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">yl</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">zl</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sx</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sz</span><span class="p">),</span> <span class="n">vtk</span><span class="o">.</span><span class="n">VTK_UNSIGNED_CHAR</span><span class="p">)</span>
+        <span class="k">print</span> <span class="s">&#39;vtkImageData object created&#39;</span>
+        <span class="c"># Write silhouette voxel array to file</span>
+        <span class="k">print</span> <span class="s">&#39;Saving VTI file for silhouette voxel array {0} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outFile</span><span class="p">)</span>
+        <span class="n">vtkImageData2vti</span><span class="p">(</span><span class="n">outFile</span><span class="p">,</span> <span class="n">vtkInternalV</span><span class="p">)</span>    
+        <span class="k">print</span> <span class="s">&#39;VTI file saved&#39;</span>
+        
+        </div>
+<div class="viewcode-block" id="Process.exportVoxelArraySilhouetteToVTI"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.process.Process.exportVoxelArraySilhouetteToVTI">[docs]</a>    <span class="k">def</span> <span class="nf">exportVoxelArraySilhouetteToVTI</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outFile</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Export US scan silhouette voxel-array to VTI file.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        outFile : str</span>
+<span class="sd">            Full file path for the VTI file to be saved.</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c"># Check input validity</span>
+        <span class="n">checkFilePath</span><span class="p">(</span><span class="n">outFile</span><span class="p">)</span>
+        <span class="n">checkSxyz</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">sx</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sz</span><span class="p">])</span>
+        <span class="n">checkV</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">internalV</span><span class="p">)</span>
+        
+        <span class="c"># Create vtkImageData object for silhouette voxel array</span>
+        <span class="k">print</span> <span class="s">&#39;Creating vtkImageData object for silhouette values voxel array...&#39;</span>
+        <span class="n">vtkInternalV</span> <span class="o">=</span> <span class="n">nparray2vtkImageData</span><span class="p">(</span><span class="mi">255</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getSilhouetteVoxelArray</span><span class="p">()</span><span class="o">.</span><span class="n">getNumpyArray1D</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">V</span><span class="o">.</span><span class="n">getDims</span><span class="p">(),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sx</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sy</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">sz</span><span class="p">),</span> <span class="n">vtk</span><span class="o">.</span><span class="n">VTK_UNSIGNED_CHAR</span><span class="p">)</span>
         <span class="k">print</span> <span class="s">&#39;vtkImageData object created&#39;</span>
         <span class="c"># Write silhouette voxel array to file</span>
         <span class="k">print</span> <span class="s">&#39;Saving VTI file for silhouette voxel array {0} ...&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">outFile</span><span class="p">)</span>

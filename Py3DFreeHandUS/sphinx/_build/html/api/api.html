@@ -76,7 +76,15 @@ such as <tt class="docutils literal"><span class="pre">calculatePoseForUSProbe()
 
 <dl class="method">
 <dt id="Py3DFreeHandUS.process.Process.alignUSImages">
-<tt class="descname">alignUSImages</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.alignUSImages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.alignUSImages" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">alignUSImages</tt><big>(</big><em>compoundWhenOverlap=False</em>, <em>Nr=10</em>, <em>Nrest=30</em>, <em>pctIntTh=50.0</em>, <em>resetAdjRotoTranslAfterCompound=True</em>, <em>alwaysAcceptCompound=False</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.alignUSImages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.alignUSImages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Align US images in the global reference frame.
+This task can take some time, and computation time is proportional
+to the <em>total</em> number of US images to align.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Py3DFreeHandUS.process.Process.alignUSImages_old">
+<tt class="descname">alignUSImages_old</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.alignUSImages_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.alignUSImages_old" title="Permalink to this definition">¶</a></dt>
 <dd><p>Align US images in the global reference frame.
 This task can take some time, and computation time is proportional
 to the <em>total</em> number of US images to align.</p>
@@ -434,8 +442,45 @@ According to the Appendix of <a class="reference internal" href="../intro.html#r
 </dd></dl>
 
 <dl class="method">
+<dt id="Py3DFreeHandUS.process.Process.exportVoxelArraySilhouetteToVTI_old">
+<tt class="descname">exportVoxelArraySilhouetteToVTI_old</tt><big>(</big><em>outFile</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.exportVoxelArraySilhouetteToVTI_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.exportVoxelArraySilhouetteToVTI_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export US scan silhouette voxel-array to VTI file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>outFile</strong> : str</p>
+<blockquote class="last">
+<div><p>Full file path for the VTI file to be saved.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="Py3DFreeHandUS.process.Process.exportVoxelArrayToVTI">
 <tt class="descname">exportVoxelArrayToVTI</tt><big>(</big><em>outFile</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.exportVoxelArrayToVTI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.exportVoxelArrayToVTI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export grey-values voxel-array to VTI file.</p>
+<p>VTI is a VTK file format (see <a class="reference external" href="http://www.cacr.caltech.edu/~slombey/asci/vtk/vtk_formats.simple.html">here</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>outFile</strong> : str</p>
+<blockquote class="last">
+<div><p>Full file path for the VTI file to be saved.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="Py3DFreeHandUS.process.Process.exportVoxelArrayToVTI_old">
+<tt class="descname">exportVoxelArrayToVTI_old</tt><big>(</big><em>outFile</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.exportVoxelArrayToVTI_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.exportVoxelArrayToVTI_old" title="Permalink to this definition">¶</a></dt>
 <dd><p>Export grey-values voxel-array to VTI file.</p>
 <p>VTI is a VTK file format (see <a class="reference external" href="http://www.cacr.caltech.edu/~slombey/asci/vtk/vtk_formats.simple.html">here</a>).</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -504,6 +549,13 @@ If None, it will be ignored. Othwerwise, it must indicate the full path of a pre
 <dl class="method">
 <dt id="Py3DFreeHandUS.process.Process.fillGaps">
 <tt class="descname">fillGaps</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.fillGaps"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.fillGaps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the gap-filling procedure.
+This task can take some time.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="Py3DFreeHandUS.process.Process.fillGaps_old">
+<tt class="descname">fillGaps_old</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.fillGaps_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.fillGaps_old" title="Permalink to this definition">¶</a></dt>
 <dd><p>Run the gap-filling procedure.
 This task can take some time.</p>
 </dd></dl>
@@ -760,6 +812,12 @@ points distance and <tt class="docutils literal"><span class="pre">L</span></tt>
 </dd></dl>
 
 <dl class="method">
+<dt id="Py3DFreeHandUS.process.Process.initVoxelArray_old">
+<tt class="descname">initVoxelArray_old</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.initVoxelArray_old"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.initVoxelArray_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize voxel array. It instantiate data for the voxel array grey values.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="Py3DFreeHandUS.process.Process.setDataSourceProperties">
 <tt class="descname">setDataSourceProperties</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/process.html#Process.setDataSourceProperties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.process.Process.setDataSourceProperties" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set data source properties (for US and/or optoelectronic system).</p>
@@ -838,7 +896,7 @@ vertical axis (in <em>mm/pixel</em>).</p>
 <div><p>Method for filling gaps.
 If &#8216;VNN&#8217; (Voxel Nearest Neighbour, default), the nearest voxel to the gap is
 used to fill the gap. Arguments <tt class="docutils literal"><span class="pre">maxS</span></tt> and <tt class="docutils literal"><span class="pre">minPct</span></tt> will be ignored.
-If <a href="#id15"><span class="problematic" id="id16">``</span></a>distTh` is set, voxels with a distance greater than this threshold will
+If <a href="#id16"><span class="problematic" id="id17">``</span></a>distTh` is set, voxels with a distance greater than this threshold will
 be ignored when filling gaps.
 If &#8216;AVG_CUBE&#8217;, this procedure is applied:</p>
 <blockquote>
@@ -1102,7 +1160,7 @@ where LCM is the Least Minimum Multiple operator.</p>
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.calculateDA">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">calculateDA</tt><big>(</big><em>T</em>, <em>sx</em>, <em>sy</em>, <em>points</em>, <em>L</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#calculateDA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.calculateDA" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate Distance Accuracy, as indicated in <a class="reference internal" href="../intro.html#ref2" id="id18">[Ref2]</a>. It needs
+<dd><p>Calculate Distance Accuracy, as indicated in <a class="reference internal" href="../intro.html#ref2" id="id19">[Ref2]</a>. It needs
 2 single-point features to be extracted for some US images of a calibration 
 quality assessment acquisition. These 2 points (each for different US images)
 are reconstructed in and the distance is calculated. This process can be
@@ -1149,7 +1207,7 @@ measured real distance <tt class="docutils literal"><span class="pre">L</span></
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.calculateRA">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">calculateRA</tt><big>(</big><em>T</em>, <em>sx</em>, <em>sy</em>, <em>points</em>, <em>P</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#calculateRA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.calculateRA" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate Reconstruction Accuracy, as indicated in <a class="reference internal" href="../intro.html#ref2" id="id19">[Ref2]</a>. It needs
+<dd><p>Calculate Reconstruction Accuracy, as indicated in <a class="reference internal" href="../intro.html#ref2" id="id20">[Ref2]</a>. It needs
 1 single-point feature to be extracted for some US images of a calibration 
 quality assessment acquisition. These points (each for different US images)
 are reconstructed in global reference frame. RA is the mean of the norm of
@@ -1193,7 +1251,7 @@ the difference between these points and the gold-standard points <tt class="docu
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.calculateRP">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">calculateRP</tt><big>(</big><em>T</em>, <em>sx</em>, <em>sy</em>, <em>points</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#calculateRP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.calculateRP" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate point reconstruction reconstruction precision, as in <a class="reference internal" href="../intro.html#ref1" id="id20">[Ref1]</a>. 
+<dd><p>Calculate point reconstruction reconstruction precision, as in <a class="reference internal" href="../intro.html#ref1" id="id21">[Ref1]</a>. 
 It needs single-point feature to be extracted for some US images of a calibration 
 quality assessment acquisition. The points are the reconstructed in 
 3D space, creating a cloud of points. RP is the mean of the distances
@@ -1303,14 +1361,14 @@ If None, all the time line willbe used.</p>
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.createCalibEquations">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">createCalibEquations</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#createCalibEquations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.createCalibEquations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate and return symbolic calibration equations (1) in <a class="reference internal" href="../intro.html#ref2" id="id21">[Ref2]</a>.</p>
+<dd><p>Generate and return symbolic calibration equations (1) in <a class="reference internal" href="../intro.html#ref2" id="id22">[Ref2]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>Pph</strong> : sympy.matrices.matrices.MutableMatrix</p>
 <blockquote>
-<div><p>3 x 1 matrix containing symbolic equations (1) in <a class="reference internal" href="../intro.html#ref2" id="id22">[Ref2]</a>.</p>
+<div><p>3 x 1 matrix containing symbolic equations (1) in <a class="reference internal" href="../intro.html#ref2" id="id23">[Ref2]</a>.</p>
 </div></blockquote>
 <p><strong>J</strong> : sympy.matrices.matrices.MutableMatrix*)</p>
 <blockquote>
@@ -1342,14 +1400,14 @@ These symbols were used to create equations in <tt class="docutils literal"><spa
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.createCalibExpressionsForMaxNCC">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">createCalibExpressionsForMaxNCC</tt><big>(</big><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#createCalibExpressionsForMaxNCC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.createCalibExpressionsForMaxNCC" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generate and return symbolic calibration roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id23">[Ref3]</a>.</p>
+<dd><p>Generate and return symbolic calibration roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id24">[Ref3]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>i2Ti1</strong> : sympy.matrices.matrices.MutableMatrix*)</p>
 <blockquote>
-<div><p>4 x 4 matrix containing symbolic roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id24">[Ref3]</a>.</p>
+<div><p>4 x 4 matrix containing symbolic roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id25">[Ref3]</a>.</p>
 </div></blockquote>
 <p><strong>prTi</strong> : sympy.matrices.matrices.MutableMatrix*)</p>
 <blockquote>
@@ -1377,14 +1435,14 @@ were used to create equations in <tt class="docutils literal"><span class="pre">
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.maximizeNCC">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">maximizeNCC</tt><big>(</big><em>i2Ti1</em>, <em>syms</em>, <em>variables</em>, <em>init</em>, <em>Rpr</em>, <em>Tpr</em>, <em>I</em>, <em>pixel2mmX</em>, <em>pixel2mmY</em>, <em>frames</em>, <em>savePath</em>, <em>thZ</em>, <em>maxExpr</em>, <em>mask=None</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#maximizeNCC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.maximizeNCC" title="Permalink to this definition">¶</a></dt>
-<dd><p>Minimize a modification of expression (1) in <a class="reference internal" href="../intro.html#ref3" id="id25">[Ref3]</a>. More specifically, it aims at maximizing the average Normalized Cross-Correlation of the intersection of pair of US images.</p>
+<dd><p>Minimize a modification of expression (1) in <a class="reference internal" href="../intro.html#ref3" id="id26">[Ref3]</a>. More specifically, it aims at maximizing the average Normalized Cross-Correlation of the intersection of pair of US images.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>i2Ti1</strong> : sympy.core.add.Add:</p>
 <blockquote>
-<div><p>4 x 4 matrix containing symbolic roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id26">[Ref3]</a>.</p>
+<div><p>4 x 4 matrix containing symbolic roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id27">[Ref3]</a>.</p>
 </div></blockquote>
 <p><strong>syms</strong> : dict</p>
 <blockquote>
@@ -1469,14 +1527,14 @@ Despite it is about 2x faster than <tt class="docutils literal"><span class="pre
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.maximizeNCCint">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">maximizeNCCint</tt><big>(</big><em>i2Ti1</em>, <em>syms</em>, <em>variables</em>, <em>init</em>, <em>Rpr</em>, <em>Tpr</em>, <em>I</em>, <em>pixel2mmX</em>, <em>pixel2mmY</em>, <em>frames</em>, <em>thZ</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#maximizeNCCint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.maximizeNCCint" title="Permalink to this definition">¶</a></dt>
-<dd><p>(<em>Deprecated</em>) Minimize a modification of expression (1) in <a class="reference internal" href="../intro.html#ref3" id="id27">[Ref3]</a>. More specifically, it aims at maximizing the average Normalized Cross-Correlation of the intersection of pair of US images.</p>
+<dd><p>(<em>Deprecated</em>) Minimize a modification of expression (1) in <a class="reference internal" href="../intro.html#ref3" id="id28">[Ref3]</a>. More specifically, it aims at maximizing the average Normalized Cross-Correlation of the intersection of pair of US images.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>i2Ti1</strong> : sympy.core.add.Add</p>
 <blockquote>
-<div><p>4 x 4 matrix containing symbolic roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id28">[Ref3]</a>.</p>
+<div><p>4 x 4 matrix containing symbolic roto-translation matrix in (3) in <a class="reference internal" href="../intro.html#ref3" id="id29">[Ref3]</a>.</p>
 </div></blockquote>
 <p><strong>syms</strong> : dict</p>
 <blockquote>
@@ -1529,7 +1587,7 @@ Despite it is about 2x faster than <tt class="docutils literal"><span class="pre
 <dl class="function">
 <dt id="Py3DFreeHandUS.calib.solveCalibEquations">
 <tt class="descclassname">Py3DFreeHandUS.calib.</tt><tt class="descname">solveCalibEquations</tt><big>(</big><em>eq</em>, <em>J</em>, <em>syms</em>, <em>variables</em>, <em>init</em>, <em>xtol</em>, <em>ftol</em>, <em>Rpr</em>, <em>Tpr</em>, <em>features</em>, <em>regJ</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/calib.html#solveCalibEquations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.calib.solveCalibEquations" title="Permalink to this definition">¶</a></dt>
-<dd><p>Solve calibration equations (1) in <a class="reference internal" href="../intro.html#ref2" id="id29">[Ref2]</a>. More specifically, a system
+<dd><p>Solve calibration equations (1) in <a class="reference internal" href="../intro.html#ref2" id="id30">[Ref2]</a>. More specifically, a system
 of non-linear equations is created by coyping the symbolic equation <tt class="docutils literal"><span class="pre">eq</span></tt>,
 replacing the experimental data for each time frame, and stacking it in the
 system to be solved. The iterative method used to solve the system is <em>Levenberg–Marquardt</em>.</p>
@@ -1576,7 +1634,7 @@ system to be solved. The iterative method used to solve the system is <em>Levenb
 </div></blockquote>
 <p><strong>regJ: bool</strong></p>
 <blockquote>
-<div><p>If True, Jacobian will be regularized by using scaling in eq 15, <a class="reference internal" href="../intro.html#ref2" id="id30">[Ref2]</a>.</p>
+<div><p>If True, Jacobian will be regularized by using scaling in eq 15, <a class="reference internal" href="../intro.html#ref2" id="id31">[Ref2]</a>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1586,7 +1644,7 @@ system to be solved. The iterative method used to solve the system is <em>Levenb
 </div></blockquote>
 <p><strong>k</strong> : int</p>
 <blockquote class="last">
-<div><p>Condition number (see <a class="reference internal" href="../intro.html#ref2" id="id31">[Ref2]</a>).</p>
+<div><p>Condition number (see <a class="reference internal" href="../intro.html#ref2" id="id32">[Ref2]</a>).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1866,7 +1924,7 @@ The research mask is centered around (cx, cy).</p>
 </div></blockquote>
 <p><strong>featureParams</strong> : dict</p>
 <blockquote>
-<div><p>See <a href="#id32"><span class="problematic" id="id33">**</span></a>kwargs in <tt class="docutils literal"><span class="pre">cv2.cv2.goodFeaturesToTrack()</span></tt>.</p>
+<div><p>See <a href="#id33"><span class="problematic" id="id34">**</span></a>kwargs in <tt class="docutils literal"><span class="pre">cv2.cv2.goodFeaturesToTrack()</span></tt>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2119,7 +2177,19 @@ available keys. If an item was not able to be retrieved, it is None.</p>
 </div>
 <div class="section" id="module-Py3DFreeHandUS.voxel_array_utils">
 <span id="voxel-array-utils"></span><h2><tt class="docutils literal"><span class="pre">voxel_array_utils</span></tt><a class="headerlink" href="#module-Py3DFreeHandUS.voxel_array_utils" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-voxel_array_utils"></span><dl class="function">
+<span class="target" id="module-voxel_array_utils"></span><dl class="class">
+<dt id="Py3DFreeHandUS.voxel_array_utils.VoxelArray3D">
+<em class="property">class </em><tt class="descclassname">Py3DFreeHandUS.voxel_array_utils.</tt><tt class="descname">VoxelArray3D</tt><big>(</big><em>dataType=&lt;type 'numpy.uint8'&gt;</em>, <em>dims=(0</em>, <em>0</em>, <em>0)</em>, <em>scales=(1.0</em>, <em>1.0</em>, <em>1.0)</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/voxel_array_utils.html#VoxelArray3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.voxel_array_utils.VoxelArray3D" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Methods</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="Py3DFreeHandUS.voxel_array_utils.VoxelArray3DFrom2DImages">
+<em class="property">class </em><tt class="descclassname">Py3DFreeHandUS.voxel_array_utils.</tt><tt class="descname">VoxelArray3DFrom2DImages</tt><big>(</big><em>**kwargs</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/voxel_array_utils.html#VoxelArray3DFrom2DImages"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.voxel_array_utils.VoxelArray3DFrom2DImages" title="Permalink to this definition">¶</a></dt>
+<dd><p class="rubric">Methods</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="Py3DFreeHandUS.voxel_array_utils.createRandomSpheresIn3DVA">
 <tt class="descclassname">Py3DFreeHandUS.voxel_array_utils.</tt><tt class="descname">createRandomSpheresIn3DVA</tt><big>(</big><em>xl</em>, <em>yl</em>, <em>zl</em>, <em>N=100</em>, <em>rMax='small'</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/voxel_array_utils.html#createRandomSpheresIn3DVA"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.voxel_array_utils.createRandomSpheresIn3DVA" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create voxel array containing spheres with random position and radius.
@@ -2958,7 +3028,7 @@ J Biomech. Engng 1983 105: 136-144</p>
 
 <dl class="function">
 <dt id="Py3DFreeHandUS.kine.getJointAngles">
-<tt class="descclassname">Py3DFreeHandUS.kine.</tt><tt class="descname">getJointAngles</tt><big>(</big><em>R1</em>, <em>R2</em>, <em>R2anglesFun=&lt;function R2zxy at 0x00000000090020B8&gt;</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/kine.html#getJointAngles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.kine.getJointAngles" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">Py3DFreeHandUS.kine.</tt><tt class="descname">getJointAngles</tt><big>(</big><em>R1</em>, <em>R2</em>, <em>R2anglesFun=&lt;function R2zxy at 0x0000000009E47B38&gt;</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/kine.html#getJointAngles"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.kine.getJointAngles" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate 3 joint angles between 2 rigid bodies.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -4775,6 +4845,41 @@ Frame rate is <em>not</em> added as <em>CineRate</em> tag in the DICOM file.</p>
 <p><strong>fileOut</strong> : str</p>
 <blockquote class="last">
 <div><p>Path for output DICOM file.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Py3DFreeHandUS.converters.vti2arr">
+<tt class="descclassname">Py3DFreeHandUS.converters.</tt><tt class="descname">vti2arr</tt><big>(</big><em>fileIn</em><big>)</big><a class="reference internal" href="../_modules/Py3DFreeHandUS/converters.html#vti2arr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#Py3DFreeHandUS.converters.vti2arr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert voxel-array from VTI to Numpy 3D image array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fileIn</strong> : str</p>
+<blockquote>
+<div><p>Path for input VTI file.</p>
+</div></blockquote>
+<p><strong>fileOut</strong> : str</p>
+<blockquote>
+<div><p>Path for output MAT file.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>V</strong> : np.ndarray</p>
+<blockquote>
+<div><p>Lx x Ly x Lz 3D array, representing the voxel-array.</p>
+</div></blockquote>
+<p><strong>metadata</strong> : dict</p>
+<blockquote class="last">
+<div><p>Dict containing metadata about voxel array:</p>
+<ul class="simple">
+<li>&#8216;spacing&#8217;: array of voxel dimensions (pixel/mm)</li>
+</ul>
 </div></blockquote>
 </td>
 </tr>

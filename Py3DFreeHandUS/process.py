@@ -36,7 +36,7 @@ def checkInt(n):
     return False
 
 def checkFreq(f):
-    if f == None:
+    if f is None:
         raise Exception('Acquisition frequency was not defined')
 #    if not checkInt(f) or f <= 0:
 #        raise Exception('Acquisition frequency must be integer and positive')
@@ -50,20 +50,20 @@ def checkMkrList(mkrList):
         raise Exception('There must be at least 3 markers')
 
 def checkKineFiles(kineFiles, L=None):
-    if kineFiles == None:
+    if kineFiles is None:
         raise Exception('Kinematics files were not set')
     if L <> None and len(kineFiles) <> L:
         raise Exception('Number of kinematics files must be {0}'.format(L))
 
 def checkUsFiles(usFiles, L=None):
-    if usFiles == None:
+    if usFiles is None:
         raise Exception('US files were not set')
     if L <> None and len(usFiles) <> L:
         raise Exception('Number of US files must be {0}'.format(L))
 
 
 def checkIm2PrPose(prRim, Tim):
-    if prRim == None or Tim == None:
+    if prRim is None or Tim is None:
          raise Exception('US probe calibration was not performed')        
     
     if len(prRim.shape) <> 2 or prRim.shape[0] <> 3 or prRim.shape[1] <> 3:
@@ -73,7 +73,7 @@ def checkIm2PrPose(prRim, Tim):
         raise Exception('US image-to-probe position vector must be a 3 elements vector')
 
 def checkPr2GlPose(Rpr, Tpr):
-    if Rpr == None or Tpr == None:
+    if Rpr is None or Tpr is None:
          raise Exception('US probe pose computation was not performed')
 
     if len(Rpr.shape) <> 3 or Rpr.shape[1] <> 3 or Rpr.shape[2] <> 3:
@@ -83,13 +83,13 @@ def checkPr2GlPose(Rpr, Tpr):
         raise Exception('Probe-to-global position vector must be a N x 3 matrix')
 
 def checkIm2GlPose(R):
-    if R == None:
+    if R is None:
         raise Exception('Pose for US images was not calculated')
     if len(R.shape) <> 3 or R.shape[1] <> 4 or R.shape[2] <> 4:
         raise Exception('Image-to-global roto-translation matrix must be a N x 4 x 4 matrix')
 
 def checkGl2ConvPose(R):
-    if R == None:
+    if R is None:
         raise Exception('Pose from global to convenient reference frame to was not set')
     if isinstance(R, basestring):
         if R not in ['auto_PCA','first_last_frames_centroid']:
@@ -111,23 +111,23 @@ def checkPhantom(phantom):
         raise Exception('Phantom not supported')
 
 def checkFeatures(features):
-    if features == None or len(features) == 0:
+    if features is None or len(features) == 0:
         raise Exception('Features from US images were not extracted')
 
 def checkImDim(d):
-    if d == None:
+    if d is None:
         raise Exception('At least one US image dimensions was not set')
     if not checkInt(d) or d <= 0:
         raise Exception('US image dimensions must be integer and positive')
 
 def checkPixel2mm(pixel2mm):
-    if pixel2mm == None:
+    if pixel2mm is None:
         raise Exception('US image pixel-to-mm ratio was not set')
     if pixel2mm <= 0:
         raise Exception('US image pixel-to-mm ratio must be positive')
 
 def checkFxyz(fxyz):
-    if fxyz == None:
+    if fxyz is None:
         raise Exception('Voxel array scaling factors were not set')
     if isinstance(fxyz, basestring):
         if fxyz not in ['auto_bounded_parallel_scans']:
@@ -140,47 +140,47 @@ def checkFxyz(fxyz):
             raise Exception('All voxel array scaling factors must be positive')  
 
 def checkWrapper(wrapper):
-    if wrapper == None:
+    if wrapper is None:
         raise Exception('Wrapping method was not set')
     if wrapper not in ['parallelepipedon', 'convex_hull','none']:
         raise Exception('Wrapping method not supported')
 
 def checkStep(step):
-    if step == None:
+    if step is None:
         raise Exception('Wrapping creation step was not set')
     if not checkInt(step) or step <= 0:
         raise Exception('Wrapping creation step must be integer and positive')
 
 def checkV(V):
-    if V == None:
+    if V is None:
         raise Exception('Voxel array initialization was not performed')
         
 def checkPathForSuppFiles(fp):
-    if fp == None:
+    if fp is None:
         raise Exception('Path for support files was not set')
     if not os.path.isdir(fp):
         raise Exception('Path for support files is not valid')
 
 def checkMethod(method):
-    if method == None:
+    if method is None:
         raise Exception('Gaps filling method was not set')
     if method not in ['VNN', 'AVG_CUBE']:
         raise Exception('Gaps filling method not supported')
 
 def checkBlocksN(blocksN):
-    if blocksN == None:
+    if blocksN is None:
         raise Exception('Blocks number was not set')
     if not checkInt(blocksN) or blocksN <= 0:
         raise Exception('Blocks number must be integer and positive or zero')
         
 def checkBlockDir(d):
-    if d == None:
+    if d is None:
         raise Exception('Blocks direction was not set')
     if d not in ['X', 'Y', 'Z']:
         raise Exception('Blocks direction not supported')
 
 def checkMaxS(maxS):
-    if maxS == None:
+    if maxS is None:
         raise Exception('Max search cube side was not set')
     if not checkInt(maxS) or not checkOdd(maxS) or maxS <= 0:
         raise Exception('Max search cube side must be integer, positive and odd')
@@ -190,13 +190,13 @@ def checkDistTh(d):
         raise Exception('Distance threshold must be greater or equal than 1')
 
 def checkMinPct(minPct):
-    if minPct == None:
+    if minPct is None:
         raise Exception('Acceptability percentage was not set')            
     if minPct < 0:
         raise Exception('Acceptability percentage must be positive or zero')
 
 def checkSxyz(sxyz):
-    if sxyz == None:
+    if sxyz is None:
         raise Exception('vtkImageData spacing factors were not set')
     if isinstance(sxyz, basestring):
         if sxyz not in ['auto']:
@@ -209,31 +209,31 @@ def checkSxyz(sxyz):
             raise Exception('All vtkImageData spacing factors must be positive')
             
 def checkFilePath(p):
-    if p == None:
+    if p is None:
         raise Exception('File path was not set')
     if len(p) == 0:
         raise Exception('File path cannot be empty')
 
 def checkPrecType(p):
-    if p == None:
+    if p is None:
         raise Exception('Precision type was not set')
     if p not in ['RP']:
         raise Exception('Precision type not supported')
 
 def checkAccType(a):
-    if a == None:
+    if a is None:
         raise Exception('Accuracy type was not set')
     if a not in ['DA', 'RA']:
         raise Exception('Accuracy type not supported')
 
 def checkDist(d):
-    if d == None:
+    if d is None:
         raise Exception('Distance was not set')
     if not checkInt(d) or d <= 0:
         raise Exception('Distance must be integer and positive')
 
 def checkTimeVector(t):
-    if t == None:
+    if t is None:
         raise Exception('Time vector was not set')  
     if len(t) == 0:
         raise Exception('Time vector cannot be empty') 
@@ -241,7 +241,7 @@ def checkTimeVector(t):
 #        raise Exception('First time element must be 0')
         
 def checkTimeDelay(t):
-    if t == None:
+    if t is None:
         raise Exception('Time delay was not set')     
 
 
@@ -255,28 +255,28 @@ def setInsideRange(v, bound, stepBase):
     
 
 def checkCalibMethod(method):
-    if method == None:
+    if method is None:
         raise Exception('Calibation method was not set')
     if method not in ['eq_based', 'maximize_NCCint', 'maximize_NCC', 'maximize_NCCfast']:
         raise Exception('Calibration method not supported')
 
         
 def checkAlignFrames(alignFrames, N):
-    if alignFrames == None:
+    if alignFrames is None:
         raise Exception('Frames for alignment were not set')
     if min(alignFrames) < 0 or max(alignFrames) > N-1:
         raise Exception('Some frame for alignment out of bounds')
 
 
 def checkFillVoxMethod(method):
-    if method == None:
+    if method is None:
         raise Exception('Voxel filling method was not set')
     if method not in ['last', 'avg', 'max']:
         raise Exception('Voxel filling method not supported')
 
         
 def checkVoxFrames(voxFrames, N):
-    if voxFrames == None:
+    if voxFrames is None:
         raise Exception('Frames for voxel array reconstruction were not set')
     if isinstance(voxFrames, basestring):
         if voxFrames not in ['all','auto']:
@@ -293,7 +293,7 @@ def checkVoxFramesBounds(voxFramesBounds, N):
       
         
 def checkTemporalCalibMethod(method):
-    if method == None:
+    if method is None:
         raise Exception('Temporal calibration method was not set')
     if method not in ['vert_motion_sync']:
         raise Exception('Temporal calibration method not supported')
@@ -703,7 +703,8 @@ class Process:
             if i == 0:
                 Nprev = 0
             else:
-                Nprev = np.sum(Nf[:i])
+                #Nprev = np.sum(Nf[:i])
+                Nprev = mkrs[mkrList[0]].shape[0]
             self.validKineFrames = np.append(self.validKineFrames, Nprev + xInterpInd)
             
             # Append marker data
@@ -726,6 +727,7 @@ class Process:
                 
                 mkrName = mkrList[m]
                 mkrData = mkrs[mkrName][self.validKineFrames,:]
+                #mkrData = mkrs[mkrName]
                 
                 # Loop for each coordinate 
                 for c in xrange(len(C)):
@@ -903,7 +905,7 @@ class Process:
         checkUsFiles(self.usFiles, L=1)
         
         # Load image if necessary
-        #if featuresFile == None:
+        #if featuresFile is None:
         # Read DICOM file
         print 'Reading DICOM file {0} ...'.format(self.usFiles[0])
         D, ds = readDICOM(self.usFiles[0])
@@ -1107,7 +1109,7 @@ class Process:
                 thZ = method_args['th_z']
                 maxExpr = method_args['max_expr']
                 # Get mask, if existing
-                if self.features == None:
+                if self.features is None:
                     mask = None
                 else:
                     No = len(frames[0])
@@ -1545,7 +1547,7 @@ class Process:
         print 'Voxel array dimension: {0} x {1} x {2}'.format(self.xl,self.yl,self.zl)
         
     
-    def initVoxelArray(self):
+    def initVoxelArray_old(self):
         """Initialize voxel array. It instantiate data for the voxel array grey values.
         """
     
@@ -1580,6 +1582,26 @@ class Process:
         # Create voxel array for bool values indicating if the voxel belongs
         # to the sequence of slices
         self.internalV = np.zeros(self.V.shape, dtype=np.bool)
+        
+        
+    def initVoxelArray(self):
+        """Initialize voxel array. It instantiate data for the voxel array grey values.
+        """
+    
+        # Create voxel array for grey values
+        self.V = VoxelArray3DFrom2DImages(dataType=np.uint8, dims=(self.xl,self.yl,self.zl), scales=(self.fx,self.fy,self.fz))
+        
+        # Create voxel array for grey values indicating hox many times a voxel
+        # has been written
+        #self.contV = VoxelArray3D(dataType=np.uint8, dims=self.V.getDims())
+        
+        # Create voxel array for bool values indicating if the voxel contains
+        # raw data
+        #self.usedV = self.contV
+        
+        # Create voxel array for bool values indicating if the voxel belongs
+        # to the sequence of slices
+        #self.internalV = VoxelArray3D(dataType=np.bool, dims=self.V.getDims())
         
         
     
@@ -1644,7 +1666,7 @@ class Process:
             self.fillVoxMethod = fillVoxMethod
         
     
-    def alignUSImages(self):
+    def alignUSImages_old(self):
         """Align US images in the global reference frame.
         This task can take some time, and computation time is proportional
         to the *total* number of US images to align.
@@ -1705,7 +1727,7 @@ class Process:
                     continue
 #                if iR not in self.validKineFrames:
 #                    continue
-                if iStart == None:
+                if iStart is None:
                     iStart = i
                 # Create gray values
                 I = pixelData2grey(D[:,i,:,:])
@@ -1790,6 +1812,287 @@ class Process:
         print 'Estimate of pct of internal voxels: ({0}% total)'.format(pctInternal)
         if np.sum(self.internalV) > 0:
             pctInternalEmpty = 100.0 * np.sum(self.internalV & ~self.usedV) / np.sum(self.internalV)
+        else:
+            pctInternalEmpty = 0.
+        print 'Estimate of pct of internal empty voxels: ({0}% internal)'.format(pctInternalEmpty)
+        
+        
+        
+    def alignUSImages(self, compoundWhenOverlap=False, Nr=10, Nrest=30, pctIntTh=50., resetAdjRotoTranslAfterCompound=True, alwaysAcceptCompound=False):
+        """Align US images in the global reference frame.
+        This task can take some time, and computation time is proportional
+        to the *total* number of US images to align.
+        
+        """
+        
+        # Check input validity
+        checkImDim(self.w)
+        checkImDim(self.h)
+        checkPixel2mm(self.pixel2mmX)
+        checkPixel2mm(self.pixel2mmY)
+        checkUsFiles(self.usFiles)
+        checkIm2GlPose(self.R)
+        checkGl2ConvPose(self.convR)
+        checkFxyz([self.fx, self.fy, self.fz])
+        # xl, xo
+        checkV(self.V)
+#        checkV(self.contV)
+#        checkV(self.usedV)
+#        checkV(self.internalV)
+        checkWrapper(self.wrapper)
+        checkStep(self.step)
+        checkFillVoxMethod(self.fillVoxMethod)
+
+        # Create if necessary and check alignFrames
+        if self.alignFrames is None:
+            self.alignFrames = range(0, self.R.shape[0])
+        checkAlignFrames(self.alignFrames, self.R.shape[0])
+        
+        # Create pixel coordinates (in mm) in image reference frame
+        print 'Creating pixel 3D coordinates in image reference frame ...'
+        p = createImageCoords(self.h, self.w, self.pixel2mmY, self.pixel2mmX)
+        print 'Pixel 3D coordinates calculated'
+        
+        # Calculate image corners coordinates
+        pc = createImageCorners(self.w, self.h, self.pixel2mmX, self.pixel2mmY)
+        
+        # Calculate position for all the pixels, for all the time instant
+        t = time.time()
+        fileNames = self.usFiles
+        ioffset = 0
+        ivx = np.array(self.voxFrames)
+        state = 'write_main_VA'
+#        adjRconv = np.eye(4)
+        Aa, ta, ca = np.eye(3), np.zeros((3,1)), np.zeros((3,1))
+        for f in xrange(0,len(fileNames)):
+            # Read DICOM file
+            print 'Reading DICOM file {0} ...'.format(fileNames[f])
+            D, ds = readDICOM(fileNames[f])
+            print 'DICOM file read'
+            Ni = D.shape[1]
+            iStart = None
+            i = 0
+            if compoundWhenOverlap:
+                secV = VoxelArray3DFrom2DImages(dataType=np.uint8, scales=(self.fx,self.fy,self.fz))               
+                pctIntVect = np.array([])
+                iIntVect = np.array([])
+                xMinPrev, yMinPrev, zMinPrev = None, None, None
+                xMaxPrev, yMaxPrev, zMaxPrev = None, None, None
+                iTemp = None
+            while i < Ni:
+                # Calculate absolute index
+                iR = i + ioffset
+                # Check if frame has to be realigned
+                if iR not in ivx:
+                    i += 1
+                    continue
+                if iR not in self.alignFrames:
+                    i += 1
+                    continue
+                if iStart is None:
+                    iStart = i
+                # Create gray values
+                I = pixelData2grey(D[:,i,:,:])
+                print 'Inserting oriented slice for instant {0}/{1} ...'.format(i, Ni-1)
+#                # Calculate final adjusting matrix
+#                adjR = np.dot(adjRconv, self.convR)
+                # Calculate coordinates of image corners 
+                pcg = np.dot(np.dot(self.convR,self.R[iR,:,:]),pc) # mm
+                xc = (np.round(pcg[0,:] * self.fx) - self.xo).squeeze() # 1 x 4
+                yc = (np.round(pcg[1,:] * self.fy) - self.yo).squeeze()
+                zc = (np.round(pcg[2,:] * self.fz) - self.zo).squeeze()
+                #xyzc = np.dot(adjRconv,np.array((xc,yc,zc,np.ones(xc.shape))))
+                xyzc = np.dot(Aa, np.array((xc,yc,zc,)) - ca) + ta + ca
+                xc, yc, zc = xyzc[0,:], xyzc[1,:], xyzc[2,:]
+                xc = xc.squeeze().round()
+                yc = yc.squeeze().round()
+                zc = zc.squeeze().round()
+                # Calculate frames position in space
+                pg = np.dot(np.dot(self.convR,self.R[iR,:,:]),p) # mm
+                x = (np.round(pg[0,:] * self.fx) - self.xo).squeeze() # 1 x Np
+                y = (np.round(pg[1,:] * self.fy) - self.yo).squeeze()
+                z = (np.round(pg[2,:] * self.fz) - self.zo).squeeze()
+#                xyz = np.dot(adjRconv,np.array((x,y,z,np.ones(x.shape))))
+                xyz = np.dot(Aa, np.array((x,y,z,)) - ca) + ta + ca
+                x, y, z = xyz[0,:], xyz[1,:], xyz[2,:]
+                x = x.squeeze().round()
+                y = y.squeeze().round()
+                z = z.squeeze().round()
+                # Transform coordinates to indices
+                idxV = xyz2idx(x, y, z, self.xl, self.yl, self.zl)
+                # Check intersection persentage between current frame and previous silhouette
+                pctInt = 100. * np.sum(self.V.getSilhouetteVoxelArray().getDataByIdx(idxV)) / idxV.shape[0]
+                print 'Intersection percentage (between main voxel-array and current image): %s' % pctInt
+                
+                # Manage state
+                if compoundWhenOverlap:
+                    skipCurrent = False
+                    if state == 'write_main_VA':
+                        if i < Ni - Nr:
+                            if pctInt >= pctIntTh and f >= 1:
+                                # Start writing to secondary VA
+                                state = 'write_secondary_VA'
+                                iTemp = i
+                                print 'Started writing to secondary voxel-array ...'
+                    if state == 'write_secondary_VA':
+                        if (i - iTemp) < Nr:
+                            # Add some statistics about current frame
+                            pctIntVect = np.append(pctIntVect, pctInt)
+                            iIntVect = np.append(iIntVect, i)
+                        else:
+                            # Nr frames assessed
+                            # can change criteria here, and can use pctIntVect, iIntVect
+                            print iIntVect
+                            print pctIntVect
+#                            raw_input('')
+                            #criteria = True
+                            criteria = np.sum(pctIntVect > pctIntTh) > 0.5 * Nr
+                            if criteria:
+                                xa2, ya2, za2 = xMinPrev, yMinPrev, zMinPrev
+                                xb2, yb2, zb2 = xMaxPrev, yMaxPrev, zMaxPrev
+                                # Slice main silhouette voxel-array using borders of second one
+                                subInternalV1 = self.V.getSilhouetteVoxelArray().getSubVoxelArray(xa2, xb2, ya2, yb2, za2, zb2)
+                                # Find smallest parallelepipedon edges containing sliced main silhouette
+                                xa1, xb1, ya1, yb1, za1, zb1 = subInternalV1.getCoordsSmallestWrappingParallelepipedon()
+                                xa1 += xa2; xb1 += xa2
+                                ya1 += ya2; yb1 += ya2
+                                za1 += za2; zb1 += za2
+                                # Restrict region of interest
+                                rx, ry, rz = 1, 1, 1
+                                xra1 = 0.5 * (xa1 + xb1) - rx * 0.5 * (xb1 - xa1)
+                                xrb1 = 0.5 * (xa1 + xb1) + rx * 0.5 * (xb1 - xa1)
+                                yra1 = 0.5 * (ya1 + yb1) - ry * 0.5 * (yb1 - ya1)
+                                yrb1 = 0.5 * (ya1 + yb1) + ry * 0.5 * (yb1 - ya1)
+                                zra1 = 0.5 * (za1 + zb1) - rz * 0.5 * (zb1 - za1)
+                                zrb1 = 0.5 * (za1 + zb1) + rz * 0.5 * (zb1 - za1)
+                                # Slice main voxel-array using final borders
+                                subV1 = self.V.getSubVoxelArray(xra1, xrb1, yra1, yrb1, zra1, zrb1)
+                                # Slice secondary voxel-array using final borders
+                                subV2 = secV.getSubVoxelArray(xra1-xa2, xrb1-xa2, yra1-ya2, yrb1-ya2, zra1-za2, zrb1-za2)
+                                # Fill gaps for both sub-volumes
+                                subV1.fillGaps(method=self.method, blocksN=1, blockDir=self.blockDir, distTh=self.distTh, maxS=self.maxS, minPct=self.minPct)
+                                subV2.fillGaps(method=self.method, blocksN=1, blockDir=self.blockDir, distTh=self.distTh, maxS=self.maxS, minPct=self.minPct)                                
+                                # Apply 3D registration
+                                V1 = subV1.getNumpyArray3D()
+                                V2 = subV2.getNumpyArray3D()
+                                S1 = 255*subV1.getSilhouetteVoxelArray().getNumpyArray3D().astype(np.uint8)
+                                S2 = 255*subV2.getSilhouetteVoxelArray().getNumpyArray3D().astype(np.uint8)
+                                print 'Performing 3D registration ...'
+                                _A, _t, _c = compound3D(V1, V2, S1, S2, (xra1, yra1, zra1))
+                                if alwaysAcceptCompound:
+                                    Aa, ta, ca = _A, _t, _c
+                                else:
+                                    choice = raw_input('Keep it? (y/n, n=use previous)? ')
+                                    if choice == 'y':
+                                        #Aa, ta, ca = _A, _t, _c + np.array((xra1, yra1, zra1))[:,None]
+                                        Aa, ta, ca = _A, _t, _c
+                                print '3D registration performed'
+                            else:
+                                # Do not apply registration
+                                print '3D registration will not be applied'
+                            # Reset to default state which also ignores intersection (otherwise infinite loop)
+                            state = 'write_main_VA_ignore_int'
+                            j = i # temporarily save i into j
+                            i = iTemp
+                            iTemp = j
+                            print 'Returning to frame where writing to secondary frame started ...'
+                            skipCurrent = True
+                    elif state == 'write_main_VA_ignore_int':
+                        print i, iTemp
+                        if i == iTemp:
+                            # Reset to default state
+                            state = 'write_main_VA'
+                            iTemp = None
+                            pctIntVect = np.array([])
+                            iIntVect = np.array([])
+                            secV = VoxelArray3DFrom2DImages(dataType=np.uint8, scales=(self.fx,self.fy,self.fz))
+                            xMinPrev, yMinPrev, zMinPrev = None, None, None
+                            xMaxPrev, yMaxPrev, zMaxPrev = None, None, None
+                            if resetAdjRotoTranslAfterCompound:
+                                Aa, ta, ca = np.eye(3), np.zeros((3,1)), np.zeros((3,1))
+                            print 'Started writing to main voxel-array ...'
+                            V1 = self.V.getNumpyArray3D()
+                            import SimpleITK as sitk
+                            sitk.Show(sitk.GetImageFromArray(V1))
+                    if skipCurrent:  # go to next iteration
+                        print 'Skipping current frame ...'
+                        continue
+                
+                # Print current state
+                print '-- STATE: %s' % state
+                # Select voxel array upon state
+                if state == 'write_main_VA' or state == 'write_main_VA_ignore_int':
+                    # Calculate indices to write
+                    pass # done earlier
+                    # Calculate image corners
+                    corners = (xc, yc, zc)
+                    # Select main voxel-array
+                    V = self.V
+                elif state == 'write_secondary_VA':
+                    if (i - iTemp) > Nrest:
+                        # Automatically extend secondary voxel-array, if needed
+                        xMin, xMax = np.max((0,x.min())), np.min((self.xl-1,x.max()))
+                        yMin, yMax = np.max((0,y.min())), np.min((self.yl-1,y.max()))
+                        zMin, zMax = np.max((0,z.min())), np.min((self.zl-1,z.max()))
+                        if xMinPrev is None or yMinPrev is None or zMinPrev is None:
+                            xMinPrev, yMinPrev, zMinPrev = xMin, yMin, zMin
+                        if xMaxPrev is None or yMaxPrev is None or zMaxPrev is None:
+                            xMaxPrev, yMaxPrev, zMaxPrev = xMax, yMax, zMax
+                        xa, xb = xMin - xMinPrev, xMax - xMinPrev
+                        ya, yb = yMin - yMinPrev, yMax - yMinPrev
+                        za, zb = zMin - zMinPrev, zMax - zMinPrev
+                        #print secV.V.shape[0], np.prod(secV.getDims())
+                        secV.extend(xa, xb, ya, yb, za, zb)
+                        #print secV.V.shape[0], np.prod(secV.getDims())
+                        xMinPrev, yMinPrev, zMinPrev = np.min((xMin,xMinPrev)), np.min((yMin,yMinPrev)), np.min((zMin,zMinPrev))
+                        xMaxPrev, yMaxPrev, zMaxPrev = np.max((xMax,xMaxPrev)), np.max((yMax,yMaxPrev)), np.max((zMax,zMaxPrev))
+                        # Calculate indices to write
+                        x2, y2, z2 = x - xMinPrev, y - yMinPrev, z - zMinPrev
+                        xl2, yl2, zl2 = secV.getDims()
+                        idxV = xyz2idx(x2, y2, z2, xl2, yl2, zl2)
+                        # Calculate image corners
+                        corners = (xc-xMinPrev, yc-yMinPrev, zc-zMinPrev)
+                        # Select secondary voxel-array
+                        V = secV
+                    else:
+                        V = None
+                if V is not None:
+                    # Write to selected voxel-array
+                    V.writeImageByIdx(idxV, I, self.fillVoxMethod)
+                    del I
+                    # Create wrapper for selected voxel-array
+                    if i == iStart:
+                        cornersPrev = corners
+                    else:
+                        cornersPrev = None
+                    updateWrapper = True
+                    if i < Ni-1:
+                        if i % self.step:
+                            updateWrapper = False
+                    if updateWrapper:
+                        V.updateWrapper(self.wrapper, corners, cornersPrev=cornersPrev)
+                # Update frame index
+                i += 1
+                
+            ioffset += Ni
+            del D, ds       
+            
+        
+#        self.usedV.setAllDataByNumpy1D(self.contV.getNumpyArray1D().astype(np.bool))
+#        if self.wrapper <> 'none':
+#            del xcPrev, ycPrev, zcPrev, idxInternal, xcInternal, ycInternal, zcInternal
+        elapsed = time.time() - t
+        print 'Elapsed time: {0} s'.format(elapsed)
+        V = self.V.getNumpyArray1D()
+        usedV = self.V.getCounterVoxelArray().getNumpyArray1D() > 0
+        internalV = self.V.getSilhouetteVoxelArray().getNumpyArray1D()
+        idxEmptyN = np.sum(~usedV)
+        pctEmpty = 100.0 * idxEmptyN / V.size
+        print 'Pct of empty voxels: ({0}% total)'.format(pctEmpty)
+        pctInternal = 100.0 * np.sum(internalV) / V.size
+        print 'Estimate of pct of internal voxels: ({0}% total)'.format(pctInternal)
+        if np.sum(internalV) > 0:
+            pctInternalEmpty = 100.0 * np.sum(internalV & ~usedV) / np.sum(internalV)
         else:
             pctInternalEmpty = 0.
         print 'Estimate of pct of internal empty voxels: ({0}% internal)'.format(pctInternalEmpty)
@@ -1880,7 +2183,7 @@ class Process:
             self.minPct = minPct
             
     
-    def fillGaps(self):
+    def fillGaps_old(self):
         """Run the gap-filling procedure.
         This task can take some time.
         
@@ -1954,7 +2257,7 @@ class Process:
                     reshV = (~self.usedV & self.internalV)[cLims[2][0]:cLims[2][1],cLims[1][0]:cLims[1][1],cLims[0][0]:cLims[0][1]]
                     reshV2 = self.V[cLims[2][0]:cLims[2][1],cLims[1][0]:cLims[1][1],cLims[0][0]:cLims[0][1]]
                 np.set_printoptions(threshold=np.nan)
-                if self.distTh == None:
+                if self.distTh is None:
                     idxV = nd.distance_transform_edt(reshV, return_distances=False, return_indices=True)
                 else:
                     edt, idxV = nd.distance_transform_edt(reshV, return_distances=True, return_indices=True)
@@ -2017,6 +2320,29 @@ class Process:
         print 'Empty voxels filled when possible'
         return pctInternalEmpty
         
+
+    def fillGaps(self):
+        """Run the gap-filling procedure.
+        This task can take some time.
+        
+        """
+    
+        # Check input validity
+        checkMethod(self.method)
+        checkBlocksN(self.blocksN)
+        checkMaxS(self.maxS)
+        checkBlockDir(self.blockDir)
+        if self.method == 'VNN':
+            checkDistTh(self.distTh)
+        if self.method == 'AVG_CUBE':
+            checkMinPct(self.minPct)        
+        checkV(self.V)
+#        checkV(self.usedV)
+#        checkV(self.internalV)
+        
+        pctInternalEmpty = self.V.fillGaps(method=self.method, blocksN=self.blocksN, blockDir=self.blockDir, distTh=self.distTh, maxS=self.maxS, minPct=self.minPct)
+        return pctInternalEmpty
+        
     
     def getVoxelPhysicalSize(self):
         """Get physical size for a single voxel.
@@ -2069,7 +2395,7 @@ class Process:
             print 'vtkImageData spacing factors set to: %d, %d, %d' % (self.sx, self.sy, self.sz)
         
     
-    def exportVoxelArrayToVTI(self, outFile):
+    def exportVoxelArrayToVTI_old(self, outFile):
         """Export grey-values voxel-array to VTI file.
         
         VTI is a VTK file format (see `here <http://www.cacr.caltech.edu/~slombey/asci/vtk/vtk_formats.simple.html>`_).
@@ -2095,10 +2421,38 @@ class Process:
         print 'Saving VTI file for grey values voxel array {0} ...'.format(outFile)
         vtkImageData2vti(outFile, vtkV)    
         print 'VTI file saved'
+        
+        
+    def exportVoxelArrayToVTI(self, outFile):
+        """Export grey-values voxel-array to VTI file.
+        
+        VTI is a VTK file format (see `here <http://www.cacr.caltech.edu/~slombey/asci/vtk/vtk_formats.simple.html>`_).
+        
+        Parameters
+        ----------
+        outFile : str
+            Full file path for the VTI file to be saved.
+        
+        """
+        
+        # Check input validity
+        checkFilePath(outFile)
+        checkSxyz([self.sx, self.sy, self.sz])
+        checkV(self.V)
+        # xl
+        
+        # Create vtkImageData object for grey values voxel array
+        print 'Creating vtkImageData object for grey values voxel array...'
+        vtkV = self.V.getVtkImageData((self.sx,self.sy,self.sz), vtk.VTK_UNSIGNED_CHAR)
+        print 'vtkImageData object created'
+        # Write grey values voxel array to file
+        print 'Saving VTI file for grey values voxel array {0} ...'.format(outFile)
+        vtkImageData2vti(outFile, vtkV)    
+        print 'VTI file saved'
 
         
     
-    def exportVoxelArraySilhouetteToVTI(self, outFile):
+    def exportVoxelArraySilhouetteToVTI_old(self, outFile):
         """Export US scan silhouette voxel-array to VTI file.
         
         Parameters
@@ -2116,6 +2470,31 @@ class Process:
         # Create vtkImageData object for silhouette voxel array
         print 'Creating vtkImageData object for silhouette values voxel array...'
         vtkInternalV = nparray2vtkImageData(255*self.internalV.astype(np.uint8), (self.xl,self.yl,self.zl), (self.sx,self.sy,self.sz), vtk.VTK_UNSIGNED_CHAR)
+        print 'vtkImageData object created'
+        # Write silhouette voxel array to file
+        print 'Saving VTI file for silhouette voxel array {0} ...'.format(outFile)
+        vtkImageData2vti(outFile, vtkInternalV)    
+        print 'VTI file saved'
+        
+        
+    def exportVoxelArraySilhouetteToVTI(self, outFile):
+        """Export US scan silhouette voxel-array to VTI file.
+        
+        Parameters
+        ----------
+        outFile : str
+            Full file path for the VTI file to be saved.
+        
+        """
+
+        # Check input validity
+        checkFilePath(outFile)
+        checkSxyz([self.sx, self.sy, self.sz])
+        checkV(self.internalV)
+        
+        # Create vtkImageData object for silhouette voxel array
+        print 'Creating vtkImageData object for silhouette values voxel array...'
+        vtkInternalV = nparray2vtkImageData(255*self.V.getSilhouetteVoxelArray().getNumpyArray1D().astype(np.uint8), self.V.getDims(), (self.sx,self.sy,self.sz), vtk.VTK_UNSIGNED_CHAR)
         print 'vtkImageData object created'
         # Write silhouette voxel array to file
         print 'Saving VTI file for silhouette voxel array {0} ...'.format(outFile)

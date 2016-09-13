@@ -551,11 +551,39 @@ def matchTemplate(SW, T, meas, **kwargs):
         res = cv2.matchTemplate(SW, T, meas)
         
     return res
-        
     
-
-
     
+def jointHistogram(I1, I2, **kwargs):
+    bins = kwargs['bins']
+    hist, xedges, yedges = np.histogram2d(I1.ravel(), I2.ravel(), bins=bins)
+    return hist
+    
+def marginalHistogram(I, **kwargs):
+    return jointHistogram(I, I, **kwargs)
+    
+def jointEntropy(I1, I2, **kwargs):
+    hist = jointHistogram(I1, I2, **kwargs)
+    p = hist.ravel()
+    p /= p.sum()
+    i = (p > 0)
+    H = np.sum(-p[i] * np.log2(p[i]))
+    return H
+    
+def marginalEntropy(I, **kwargs):
+    return jointEntropy(I, I, **kwargs)
+
+def MI(I1, I2, **kwargs):
+    H1 = marginalEntropy(I1, **kwargs)
+    H2 = marginalEntropy(I2, **kwargs)
+    H12 = jointEntropy(I1, I2, **kwargs)
+    return H1 + H2 - H12
+    
+def NMI(I1, I2, **kwargs):
+    H1 = marginalEntropy(I1, **kwargs)
+    H2 = marginalEntropy(I2, **kwargs)
+    H12 = jointEntropy(I1, I2, **kwargs)
+    return (H1 + H2) / H12
+
     
     
     
