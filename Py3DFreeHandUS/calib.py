@@ -5,6 +5,7 @@
 
 """
 
+import json
 import numpy as np    
 from sympy import Matrix, Symbol, var
 from sympy import cos as c, sin as s
@@ -355,12 +356,12 @@ def createCalibExpressionsForMaxNCC():
     # wTpr1
     #wTpr1 = Matrix(MatrixSymbol('wTpr1', 4, 4))
     wTpr1 = MatrixOfMatrixSymbol('wTpr1', 4, 4)
-    wTpr1[3, 0:4] = np.array([0,0,0,1])
+    wTpr1[3, 0:4] = np.array([0,0,0,1])[None,:]
     
     # wTpr2
     #wTpr2 = Matrix(MatrixSymbol('wTpr2', 4, 4))
     wTpr2 = MatrixOfMatrixSymbol('wTpr2', 4, 4)
-    wTpr2[3, 0:4] = np.array([0,0,0,1])
+    wTpr2[3, 0:4] = np.array([0,0,0,1])[None,:]
     
     # i2Ti1
     i2Ti1 = prTi.inv() * wTpr2.inv() * wTpr1 * prTi
@@ -659,9 +660,6 @@ def maximizeNCC(i2Ti1, syms, variables, init, Rpr, Tpr, I, pixel2mmX, pixel2mmY,
     
     # Minimize expression
     def funcSolver(x, syms, variables, i2Ti1, Rpr, Tpr, I):
-        
-        # Print data for current iteration
-        _printIterVariables(variables, init, x)
 
         global cont
         cont += 1
@@ -784,6 +782,9 @@ def maximizeNCC(i2Ti1, syms, variables, init, Rpr, Tpr, I, pixel2mmX, pixel2mmY,
             f = -np.nanmean(NCCg)
         elif maxExpr == 'weighted_avg_NCC':
             f = -np.average(NCCg, weights=pctIg)
+            
+        # Print data for current iteration
+        _printIterVariables(variables, init, x, savePath, cont, f)
 
         # Return value to minimize
         print 'Minimizing expression (current value: %f) ...' % f
@@ -896,8 +897,6 @@ def maximizeNCCcy(i2Ti1, syms, variables, init, Rpr, Tpr, I, pixel2mmX, pixel2mm
     # Minimize expression
     def funcSolver(x, syms, variables, i2Ti1, Rpr, Tpr, I):
         
-        # Print data for current iteration
-        _printIterVariables(variables, init, x)
         global cont
         cont += 1        
         
@@ -943,7 +942,7 @@ def maximizeNCCcy(i2Ti1, syms, variables, init, Rpr, Tpr, I, pixel2mmX, pixel2mm
         # Rotate matrix ot make it N x 4 x 4
         T = T.transpose((1,0,2)).transpose((2,1,0))
 
-        # Calculate NCCs andtheir weights
+        # Calculate NCCs and their weights
         NCCs, pctIs = compoundNCC(I, mask.astype(np.uint8), fr1, fr2, T, p1, c1, thZ, pixel2mmX, pixel2mmY, cont, savePath)
         
         # Update expression to minimize
@@ -953,6 +952,9 @@ def maximizeNCCcy(i2Ti1, syms, variables, init, Rpr, Tpr, I, pixel2mmX, pixel2mm
             f = -np.nanmean(NCCg)
         elif maxExpr == 'weighted_avg_NCC':
             f = -np.average(NCCg, weights=pctIg)
+            
+        # Print data for current iteration
+        _printIterVariables(variables, init, x, savePath, cont, f)
 
         # Return value to minimize
         print 'Minimizing expression (current value: %f) ...' % f
@@ -1014,9 +1016,6 @@ def maximizeNCCfast(i2Ti1, syms, variables, init, Rpr, Tpr, I, pixel2mmX, pixel2
     
     # Minimize expression
     def funcSolver(x, syms, variables, i2Ti1, Rpr, Tpr, I):
-        
-        # Print data for current iteration
-        _printIterVariables(variables, init, x)
 
         global cont
         cont += 1
@@ -1142,6 +1141,9 @@ def maximizeNCCfast(i2Ti1, syms, variables, init, Rpr, Tpr, I, pixel2mmX, pixel2
             f = -np.nanmean(NCCg)
         elif maxExpr == 'weighted_avg_NCC':
             f = -np.average(NCCg, weights=pctIg)
+            
+        # Print data for current iteration
+        _printIterVariables(variables, init, x, savePath, cont, f)
 
         # Return value to minimize
         print 'Minimizing expression (current value: %f) ...' % f
@@ -1419,11 +1421,30 @@ def calculateTimeDelayXCorr(s1, s2, s1Label, s2Label, timeVector, step, lagsBoun
     return tau
 
 
-def _printIterVariables(variables, init, values):
+def _printIterVariables(variables, init, values, savePath, iterNum, metric):
     
+    print 'Iteration number %d ' % iterNum
+    
+    # print variables to console
     for n, i, v in zip(variables, init, values):
         print '%s: %.5f (current), %.5f (init)' % (n, v, i)
-
+    
+    if len(savePath) <> 0:
+        
+        # print variables to file
+        data = {}
+        data['iterNum'] = iterNum
+        data['metric'] = metric
+        data['current'] = {}
+        for n, v in zip(variables, values):
+            data['current'][n] = v
+        data['init'] = {}
+        for n, i in zip(variables, init):
+            data['init'][n] = i
+            
+        filePath = savePath + '/it%d_params.json' % iterNum
+        with open(filePath, 'w') as fp:
+            json.dump(data, fp, indent=4)
 
 
 

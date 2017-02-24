@@ -509,36 +509,39 @@ def xyz2idx(x, y, z, xl, yl, zl, idx='counter'):
     return idx
 
 def nparray2vtkImageData(v, d, s, vtkScalarType):
-    """Transform a 1D ``numpy`` array into ``vtk.vtkImageData`` object. 
+    """Transform a 1D ``numpy`` array into ``vtk.vtkImageData`` object.
     The object contains only one scalar component.
-    
+
     Parameters
     ----------
     v : np.ndarray
         1D array to convert.
-        
+
     d : list
         3-elem list of sizes of the ``vtk.vtkImageData``.
-        
+
     s : list
         3-elem list of spacing factors of the ``vtk.vtkImageData`` (see `here <http://www.vtk.org/doc/nightly/html/classvtkImageData.html#ab3288d13810266e0b30ba0632f7b5b0b>`_).
-    
-    vtkScalarType : 
+
+    vtkScalarType :
         Scalar type to be allocated (e.g. ``vtk.VTK_UNSIGNED_CHAR``).
-    
+
     Returns
     -------
     vtk.vtkImageData
         object.
 
-    """    
-    
+    """
+
     # Create source
     source = vtk.vtkImageData()
-    source.SetDimensions(d[0], d[1], d[2])
-    source.SetNumberOfScalarComponents(1)
-    source.SetScalarType(vtkScalarType)
-    source.AllocateScalars()
+    source.SetDimensions(int(d[0]), int(d[1]), int(d[2]))
+    if vtk.VTK_MAJOR_VERSION <= 5:
+        source.SetNumberOfScalarComponents(1)
+        source.SetScalarType(vtkScalarType)
+        source.AllocateScalars()
+    else:
+        source.AllocateScalars(vtkScalarType, 1);
     source.SetSpacing(s[0], s[1], s[2])
     # Copy numpy voxel array to vtkDataArray
     dataArray = nps.numpy_to_vtk(v, deep=0, array_type=None)
@@ -547,21 +550,23 @@ def nparray2vtkImageData(v, d, s, vtkScalarType):
 
 def vtkImageData2vti(filePath, source):
     """Export a ``vtk.vtkImageData`` object to VTI file.
-    
+
     Parameters
     ----------
     filePath : str
         Full path for the VTI to be created.
-        
+
     source : vtk.vtkImageData
         object.
-    
+
     """
     writer = vtk.vtkXMLImageDataWriter()
     writer.SetFileName(filePath)
-    writer.SetInput(source)
-    writer.Write()
-    
+    if vtk.VTK_MAJOR_VERSION <= 5:
+        writer.SetInput(source)
+    else:
+        writer.SetInputData(source)
+    writer.Write()    
     
 def compound3D(V1, V2, S1, S2, O):
     

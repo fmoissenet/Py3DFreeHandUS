@@ -554,25 +554,47 @@ def matchTemplate(SW, T, meas, **kwargs):
     
     
 def jointHistogram(I1, I2, **kwargs):
+    # from: http://pythonhosted.org/MedPy/_modules/medpy/metric/image.html
     bins = kwargs['bins']
-    hist, xedges, yedges = np.histogram2d(I1.ravel(), I2.ravel(), bins=bins)
+    r1 = histogramRange(I1, bins)
+    r2 = histogramRange(I1, bins)
+    r = [r1, r2]
+    hist, xedges, yedges = np.histogram2d(I1.ravel(), I2.ravel(), bins=bins, range=r)
     return hist
     
 def marginalHistogram(I, **kwargs):
-    return jointHistogram(I, I, **kwargs)
+    bins = kwargs['bins']
+    r = histogramRange(I, bins)
+    hist, xedges = np.histogram(I.ravel(), bins=bins, range=r)
+    return hist
     
 def jointEntropy(I1, I2, **kwargs):
     hist = jointHistogram(I1, I2, **kwargs)
     p = hist.ravel()
-    p /= p.sum()
+    H = entropy(p)
+    return H
+
+def marginalEntropy(I, **kwargs):
+    hist = marginalHistogram(I, **kwargs)
+    p = hist.ravel()
+    H = entropy(p)
+    return H
+    
+def entropy(p):
+    p = p / float(p.sum())
     i = (p > 0)
     H = np.sum(-p[i] * np.log2(p[i]))
     return H
-    
-def marginalEntropy(I, **kwargs):
-    return jointEntropy(I, I, **kwargs)
 
+def histogramRange(I, bins):
+    I = np.asarray(I)
+    Imax = I.max()
+    Imin = I.min()
+    s = 0.5 * (Imax - Imin) / float(bins - 1)
+    return (Imin - s, Imax + s)
+    
 def MI(I1, I2, **kwargs):
+    # http://stackoverflow.com/questions/20491028/optimal-way-to-compute-pairwise-mutual-information-using-numpy
     H1 = marginalEntropy(I1, **kwargs)
     H2 = marginalEntropy(I2, **kwargs)
     H12 = jointEntropy(I1, I2, **kwargs)
@@ -583,6 +605,12 @@ def NMI(I1, I2, **kwargs):
     H2 = marginalEntropy(I2, **kwargs)
     H12 = jointEntropy(I1, I2, **kwargs)
     return (H1 + H2) / H12
+    
+def SUC(I1, I2, **kwargs):
+    H1 = marginalEntropy(I1, **kwargs)
+    H2 = marginalEntropy(I2, **kwargs)
+    H12 = jointEntropy(I1, I2, **kwargs)
+    return 2. * (1 - (H12 / (H1 + H2)))
 
     
     

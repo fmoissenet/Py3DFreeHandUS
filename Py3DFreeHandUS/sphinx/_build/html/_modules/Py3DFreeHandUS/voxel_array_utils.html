@@ -558,36 +558,39 @@
     <span class="k">return</span> <span class="n">idx</span>
 </div>
 <div class="viewcode-block" id="nparray2vtkImageData"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.voxel_array_utils.nparray2vtkImageData">[docs]</a><span class="k">def</span> <span class="nf">nparray2vtkImageData</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">vtkScalarType</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Transform a 1D ``numpy`` array into ``vtk.vtkImageData`` object. </span>
+    <span class="sd">&quot;&quot;&quot;Transform a 1D ``numpy`` array into ``vtk.vtkImageData`` object.</span>
 <span class="sd">    The object contains only one scalar component.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    v : np.ndarray</span>
 <span class="sd">        1D array to convert.</span>
-<span class="sd">        </span>
+
 <span class="sd">    d : list</span>
 <span class="sd">        3-elem list of sizes of the ``vtk.vtkImageData``.</span>
-<span class="sd">        </span>
+
 <span class="sd">    s : list</span>
 <span class="sd">        3-elem list of spacing factors of the ``vtk.vtkImageData`` (see `here &lt;http://www.vtk.org/doc/nightly/html/classvtkImageData.html#ab3288d13810266e0b30ba0632f7b5b0b&gt;`_).</span>
-<span class="sd">    </span>
-<span class="sd">    vtkScalarType : </span>
+
+<span class="sd">    vtkScalarType :</span>
 <span class="sd">        Scalar type to be allocated (e.g. ``vtk.VTK_UNSIGNED_CHAR``).</span>
-<span class="sd">    </span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    vtk.vtkImageData</span>
 <span class="sd">        object.</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>    
-    
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="c"># Create source</span>
     <span class="n">source</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkImageData</span><span class="p">()</span>
-    <span class="n">source</span><span class="o">.</span><span class="n">SetDimensions</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
-    <span class="n">source</span><span class="o">.</span><span class="n">SetNumberOfScalarComponents</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">source</span><span class="o">.</span><span class="n">SetScalarType</span><span class="p">(</span><span class="n">vtkScalarType</span><span class="p">)</span>
-    <span class="n">source</span><span class="o">.</span><span class="n">AllocateScalars</span><span class="p">()</span>
+    <span class="n">source</span><span class="o">.</span><span class="n">SetDimensions</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="n">vtk</span><span class="o">.</span><span class="n">VTK_MAJOR_VERSION</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">source</span><span class="o">.</span><span class="n">SetNumberOfScalarComponents</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">source</span><span class="o">.</span><span class="n">SetScalarType</span><span class="p">(</span><span class="n">vtkScalarType</span><span class="p">)</span>
+        <span class="n">source</span><span class="o">.</span><span class="n">AllocateScalars</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">source</span><span class="o">.</span><span class="n">AllocateScalars</span><span class="p">(</span><span class="n">vtkScalarType</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
     <span class="n">source</span><span class="o">.</span><span class="n">SetSpacing</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
     <span class="c"># Copy numpy voxel array to vtkDataArray</span>
     <span class="n">dataArray</span> <span class="o">=</span> <span class="n">nps</span><span class="o">.</span><span class="n">numpy_to_vtk</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">deep</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">array_type</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
@@ -596,21 +599,23 @@
 </div>
 <div class="viewcode-block" id="vtkImageData2vti"><a class="viewcode-back" href="../../api/api.html#Py3DFreeHandUS.voxel_array_utils.vtkImageData2vti">[docs]</a><span class="k">def</span> <span class="nf">vtkImageData2vti</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Export a ``vtk.vtkImageData`` object to VTI file.</span>
-<span class="sd">    </span>
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    filePath : str</span>
 <span class="sd">        Full path for the VTI to be created.</span>
-<span class="sd">        </span>
+
 <span class="sd">    source : vtk.vtkImageData</span>
 <span class="sd">        object.</span>
-<span class="sd">    </span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">writer</span> <span class="o">=</span> <span class="n">vtk</span><span class="o">.</span><span class="n">vtkXMLImageDataWriter</span><span class="p">()</span>
     <span class="n">writer</span><span class="o">.</span><span class="n">SetFileName</span><span class="p">(</span><span class="n">filePath</span><span class="p">)</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
-    <span class="n">writer</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>
-    
+    <span class="k">if</span> <span class="n">vtk</span><span class="o">.</span><span class="n">VTK_MAJOR_VERSION</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">SetInput</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">SetInputData</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">Write</span><span class="p">()</span>    
     </div>
 <span class="k">def</span> <span class="nf">compound3D</span><span class="p">(</span><span class="n">V1</span><span class="p">,</span> <span class="n">V2</span><span class="p">,</span> <span class="n">S1</span><span class="p">,</span> <span class="n">S2</span><span class="p">,</span> <span class="n">O</span><span class="p">):</span>
     

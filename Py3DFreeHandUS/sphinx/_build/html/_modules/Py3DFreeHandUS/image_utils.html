@@ -603,25 +603,47 @@
     
     </div>
 <span class="k">def</span> <span class="nf">jointHistogram</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c"># from: http://pythonhosted.org/MedPy/_modules/medpy/metric/image.html</span>
     <span class="n">bins</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;bins&#39;</span><span class="p">]</span>
-    <span class="n">hist</span><span class="p">,</span> <span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">I1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">I2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">histogramRange</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">histogramRange</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">]</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">xedges</span><span class="p">,</span> <span class="n">yedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span><span class="n">I1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">I2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">hist</span>
     
 <span class="k">def</span> <span class="nf">marginalHistogram</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">jointHistogram</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;bins&#39;</span><span class="p">]</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">histogramRange</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">hist</span><span class="p">,</span> <span class="n">xedges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">I</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">hist</span>
     
 <span class="k">def</span> <span class="nf">jointEntropy</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">hist</span> <span class="o">=</span> <span class="n">jointHistogram</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">p</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-    <span class="n">p</span> <span class="o">/=</span> <span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">H</span>
+
+<span class="k">def</span> <span class="nf">marginalEntropy</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">hist</span> <span class="o">=</span> <span class="n">marginalHistogram</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">hist</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">H</span> <span class="o">=</span> <span class="n">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">H</span>
+    
+<span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
     <span class="n">i</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
     <span class="k">return</span> <span class="n">H</span>
-    
-<span class="k">def</span> <span class="nf">marginalEntropy</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">jointEntropy</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
+<span class="k">def</span> <span class="nf">histogramRange</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">bins</span><span class="p">):</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+    <span class="n">Imax</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">Imin</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">Imax</span> <span class="o">-</span> <span class="n">Imin</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">bins</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">Imin</span> <span class="o">-</span> <span class="n">s</span><span class="p">,</span> <span class="n">Imax</span> <span class="o">+</span> <span class="n">s</span><span class="p">)</span>
+    
 <span class="k">def</span> <span class="nf">MI</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c"># http://stackoverflow.com/questions/20491028/optimal-way-to-compute-pairwise-mutual-information-using-numpy</span>
     <span class="n">H1</span> <span class="o">=</span> <span class="n">marginalEntropy</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">H2</span> <span class="o">=</span> <span class="n">marginalEntropy</span><span class="p">(</span><span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">H12</span> <span class="o">=</span> <span class="n">jointEntropy</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
@@ -632,6 +654,12 @@
     <span class="n">H2</span> <span class="o">=</span> <span class="n">marginalEntropy</span><span class="p">(</span><span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="n">H12</span> <span class="o">=</span> <span class="n">jointEntropy</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">H1</span> <span class="o">+</span> <span class="n">H2</span><span class="p">)</span> <span class="o">/</span> <span class="n">H12</span>
+    
+<span class="k">def</span> <span class="nf">SUC</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">H1</span> <span class="o">=</span> <span class="n">marginalEntropy</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">H2</span> <span class="o">=</span> <span class="n">marginalEntropy</span><span class="p">(</span><span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">H12</span> <span class="o">=</span> <span class="n">jointEntropy</span><span class="p">(</span><span class="n">I1</span><span class="p">,</span> <span class="n">I2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mf">2.</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">H12</span> <span class="o">/</span> <span class="p">(</span><span class="n">H1</span> <span class="o">+</span> <span class="n">H2</span><span class="p">)))</span>
 
     
     
